@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-16" standalone="yes"?>
+<TextAnalysisTool.NET version="2000-01-05" showOnlyFilteredLines="True">
+  <filters>
+    <filter enabled="n" excluding="n" type="matches_text" case_sensitive="n" regex="n" text="variable" description="" />
+    <filter enabled="n" excluding="n" type="matches_text" case_sensitive="n" regex="n" text="desc" description="" />
+    <filter enabled="y" excluding="n" type="matches_text" case_sensitive="n" regex="n" text="&lt;address" description="" />
+    <filter enabled="y" excluding="n" type="matches_text" case_sensitive="n" regex="n" text="off" description="" />
+  </filters>
+</TextAnalysisTool.NET>
