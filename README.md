@@ -4,11 +4,11 @@ A Cheater to the game Faster Than Light
 Apply to Faster Then Light version from Steam 
 
 Click the text from right to apply once
+
 Click the checkbox from left to lock the item
 
 | item | description | value | type |
-| --- | --- | --- | --- | --- |
-| ALL | Apply all setting below |  |  |
+| --- | --- | --- | --- |
 | HULL | Max Hull  | 30 | int32 |
 | SHIELD | Instant Sheild | 2 | float |
 | JUMP | Instant FTL | 85 | float |
