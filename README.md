@@ -18,14 +18,14 @@ Click the checkbox from left to lock the item
 | FUEL | Unlimited Fuel | 999 | int32 |
 | MISSILE | Unlimited Missile | 999 | int32 |
 | DRONE | Unlimited Drone | 999 | int32 |
-| POWER | Max Module Power |  | int32 |
-| STATUS | Max Module Health |  | int32 |
+| POWER | Max Module Power | Max | int32 |
+| STATUS | Max Module Health | Max | int32 |
 | COOLDOWN | No Module Cooldown | 5 | float |
 | WEAPON | Instant Weapon | 1 | int32 |
 | HACKING | Sustain Hacking | 0 | int32 |
 | INVISIBLE | Sustain Invisible | 0 | int32 |
 | MIND | Sustain Mind Control | 0 | int32 |
 | HUMAN | Max Crew Health | 100 | float |
-| SKILL | Max Crew Skills |  | float |
+| SKILL | Max Crew Skills | Max | float |
 | OXYGEN | Max Oxygen | 100 | float |
 
