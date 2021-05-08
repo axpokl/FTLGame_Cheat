@@ -317,7 +317,11 @@ if data=0 then
     if itemb[itemi]>=1 then
       case itemi of
       ihull:setaddr(baseaddr+$0051348C,[$CC],30);
-      ishld:setaddr(baseaddr+$0051348C,[$44,$1E8],f2l(2));
+      ishld:begin
+            data:=0;
+            getaddr(baseaddr+$0051348C,[$44,$1E8],data);
+            if data>0 then setaddr(baseaddr+$0051348C,[$44,$1E8],f2l(2));
+            end;
       ijump:setaddr(baseaddr+$0051348C,[$48C],f2l(85));
       irebl:setaddr(baseaddr+$00513498,[$80],longword(-1000));
       iengy:setaddr(baseaddr+$0051AB20,[$0],0);
