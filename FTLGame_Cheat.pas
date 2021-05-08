@@ -144,27 +144,29 @@ end;
 const ihull=1;
       ishld=2;
       ijump=3;
-      iengy=4;
-      iscrp=5;
-      ifuel=6;
-      imsle=7;
-      idron=8;
-      ipwer=9;
-      istat=10;
-      icldn=11;
-      iwpon=12;
-      ihack=13;
-      ihide=14;
-      imind=15;
-      ihumn=16;
-      iskil=17;
-      ioxyg=18;
-const maxitem=18;
+      irebl=4;
+      iengy=5;
+      iscrp=6;
+      ifuel=7;
+      imsle=8;
+      idron=9;
+      ipwer=10;
+      istat=11;
+      icldn=12;
+      iwpon=13;
+      ihack=14;
+      ihide=15;
+      imind=16;
+      ihumn=17;
+      iskil=18;
+      ioxyg=19;
+const maxitem=19;
 const itemc:array[0..maxitem]of ansistring=(
 'ALL',
 'HULL',
 'SHIELD',
 'JUMP',
+'REBEL',
 'REACTOR',
 'SCRAP',
 'FUEL',
@@ -182,7 +184,7 @@ const itemc:array[0..maxitem]of ansistring=(
 'OXYGEN');
 var itemb:array[0..maxitem]of shortint;
 var itemi:longword;
-const szw=200;szh=40;
+const szw=160;szh=32;
 var mousedown:boolean;
 var mousex,mousey:longint;
 
@@ -317,6 +319,7 @@ if data=0 then
       ihull:setaddr(baseaddr+$0051348C,[$CC],30);
       ishld:setaddr(baseaddr+$0051348C,[$44,$1E8],f2l(2));
       ijump:setaddr(baseaddr+$0051348C,[$48C],f2l(85));
+      irebl:setaddr(baseaddr+$00513498,[$80],longword(-1000));
       iengy:setaddr(baseaddr+$0051AB20,[$0],0);
       iscrp:setaddr(baseaddr+$0051348C,[$4D4],99999);
       ifuel:setaddr(baseaddr+$0051348C,[$494],999);
@@ -330,6 +333,7 @@ if data=0 then
         for addri:=0 to maxsys-1 do
           begin
           data:=0;
+          setaddr(baseaddr+$0051348C,[$18,$4*addri,$11C],1000);
           getaddr(baseaddr+$0051348C,[$18,$4*addri,$28],data);
           if (data<>$70616577) and (data<>$6E6F7264) then
             setaddr(baseaddr+$0051348C,[$18,$4*addri,$50],0,4);
