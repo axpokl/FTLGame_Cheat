@@ -21,9 +21,11 @@ Click the checkbox from left to lock the item
 | STATUS | Max Module Health |  | int32 |
 | COOLDOWN | No Module Cooldown | 5 | float |
 | WEAPON | Instant Weapon | 1 | int32 |
-| HACKING | Sustain Hacking | 0 | int32 |
-| INVISIBLE | Sustain Invisible | 0 | int32 |
-| MIND | Sustain Mind Control | 0 | int32 |
+| HACKING | Sustain Hacking | 0 | float |
+| INVISIBLE | Sustain Invisible | 0 | float |
+| MIND | Sustain Mind Control | 0 | float |
+| BATTERY | Sustain Backup Battery | 0 | float |
+| TITAL | Instant Titan Weapon | Max | float |
 | HUMAN | Max Crew Health | 100 | float |
 | SKILL | Max Crew Skills |  | float |
 | OXYGEN | Max Oxygen | 100 | float |

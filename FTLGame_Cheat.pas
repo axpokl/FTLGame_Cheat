@@ -1,4 +1,4 @@
-{$Apptype GUI}
+//{$Apptype GUI}
 {$R FTLGame_Cheat.res}
 program FTLGame_Cheat;
 
@@ -157,10 +157,12 @@ const ihull=1;
       ihack=14;
       ihide=15;
       imind=16;
-      ihumn=17;
-      iskil=18;
-      ioxyg=19;
-const maxitem=19;
+      ibatt=17;
+      ittan=18;
+      ihumn=19;
+      iskil=20;
+      ioxyg=21;
+const maxitem=21;
 const itemc:array[0..maxitem]of ansistring=(
 'ALL',
 'HULL',
@@ -179,6 +181,8 @@ const itemc:array[0..maxitem]of ansistring=(
 'HACKING',
 'INVISIBLE',
 'MIND',
+'BATTERY',
+'TITAN',
 'HUMAN',
 'SKILL',
 'OXYGEN');
@@ -261,6 +265,15 @@ pf:=@f;
 pl:=pointer(pf);
 l:=pl^;
 f2l:=l;
+end;
+
+function l2f(l:longword):single;
+var pf:^single;pl:^longword;f:single;
+begin
+pl:=@l;
+pf:=pointer(pl);
+f:=pf^;
+l2f:=f;
 end;
 
 var baseaddr:longword;
@@ -347,7 +360,16 @@ if data=0 then
       iwpon:for addri:=0 to 3 do setaddr(baseaddr+$0051348C,[$48,$1C8,$4*addri,$62C],1);
       ihack:setaddr(baseaddr+$0051348C,[$3C,$7B0],0);
       ihide:setaddr(baseaddr+$0051348C,[$2C,$1CC],0);
-      imind:setaddr(baseaddr+$0051348C,[$34,$1C0],0);
+      imind:begin
+            data:=0;
+            getaddr(baseaddr+$0051348C,[$34,$1C0],data);
+            if l2f(data)<14 then setaddr(baseaddr+$0051348C,[$34,$1C0],0);
+            end;
+      ibatt:setaddr(baseaddr+$0051348C,[$30,$1CC],0);
+      ittan:begin
+            getaddr(baseaddr+$0051348C,[$58,$0,$1C0,$8+4],data);
+            setaddr(baseaddr+$0051348C,[$58,$0,$1C0,$8],longword(data-1));
+            end;
       ihumn:
         begin
         addri:=0;
