@@ -1,7 +1,7 @@
 # FTLGame_Cheat
 A Cheater to the game Faster Than Light
 
-Apply to Faster Then Light version from Steam 
+Apply to FTL version 1.6.14 from Steam 
 
 Click the text from right to apply once
 
