@@ -12,6 +12,7 @@ Click the checkbox from left to lock the item
 | HULL | Max Hull  | 30 | int32 |
 | SHIELD | Instant Sheild | 2 | float |
 | JUMP | Instant FTL | 85 | float |
+| REBEL | No Rebel Fleet | -1000 | int32 |
 | REACTOR | No Reactor Usage | 0 | int32 |
 | SCRAP | Unlimited Scrap | 99999 | int32 |
 | FUEL | Unlimited Fuel | 999 | int32 |
