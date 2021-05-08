@@ -290,7 +290,7 @@ newthread(@draw);
 while not(isWin()) do sleep(1);
 repeat
 for itemi:=0 to maxitem do itemb[itemi]:=-1;
-getwin();
+getwin2();
 getphnd();
 baseaddr:=getbaseaddr();
 if getaddr(baseaddr+$0051348C,[],data) then for itemi:=0 to maxitem do itemb[itemi]:=0;
