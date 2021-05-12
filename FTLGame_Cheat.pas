@@ -1,4 +1,4 @@
-//{$Apptype GUI}
+{$Apptype GUI}
 {$R FTLGame_Cheat.res}
 program FTLGame_Cheat;
 
@@ -296,6 +296,7 @@ $65616E61,
 $73797263);
 var crewi:shortint;
 var crewb:boolean;
+var powerstat,powerzelta,powermax:longword;
 
 begin
 for itemi:=0 to maxitem do itemb[itemi]:=-1;
@@ -353,8 +354,13 @@ if data=0 then
           setaddr(baseaddr+$0051348C,[$18,$4*addri,$11C],1000);
           getaddr(baseaddr+$0051348C,[$18,$4*addri,$28],data);
           if (data<>$70616577) and (data<>$6E6F7264) then
-            setaddr(baseaddr+$0051348C,[$18,$4*addri,$50],0,4);
-        end;
+            begin
+            getaddr(baseaddr+$0051348C,[$18,$4*addri,$170],powerzelta);
+            getaddr(baseaddr+$0051348C,[$18,$4*addri,$100],powerstat);
+            getaddr(baseaddr+$0051348C,[$18,$4*addri,$54],powermax);
+            setaddr(baseaddr+$0051348C,[$18,$4*addri,$50],max(min(powerstat,powermax)-powerzelta,0));
+            end;
+          end;
       istat:for addri:=0 to maxsys-1 do setaddr(baseaddr+$0051348C,[$18,$4*addri,$100],0,4);
       icldn:for addri:=0 to maxsys-1 do setaddr(baseaddr+$0051348C,[$18,$4*addri,$134],f2l(5));
       iwpon:for addri:=0 to 3 do setaddr(baseaddr+$0051348C,[$48,$1C8,$4*addri,$62C],1);
@@ -388,7 +394,7 @@ if data=0 then
           setaddr(baseaddr+$00514E4C,[$4*addri,$28],0,4);
           end;
         addri:=addri+1;
-        until (addrm=maxman) or (addri=maxman+3);
+        until (addrm=maxman) or (data>1);
         end;
       iskil:
         begin
@@ -408,7 +414,7 @@ if data=0 then
           for addrj:=0 to 5 do setaddr(baseaddr+$00514E4C,[$4*addri,$314,$8*addrj],0,4);
           end;
         addri:=addri+1;
-        until (addrm=maxman) or (addri=maxman+5);
+        until (addrm=maxman) or (data>1);
         end;
       ioxyg:for addri:=0 to oxgnn do setaddr(baseaddr+$0051348C,[$24,$1C4,$4*addri],f2l(100));
       end;
