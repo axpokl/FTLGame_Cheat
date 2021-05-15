@@ -1,4 +1,4 @@
-{$Apptype GUI}
+//{$Apptype GUI}
 {$R FTLGame_Cheat.res}
 program FTLGame_Cheat;
 
@@ -280,7 +280,7 @@ var baseaddr:longword;
 var data:longword;
 var addri,addrj,addrm:longword;
 
-var maxsys:longword;
+var maxsys:longint;
 var maxman:longword;
 //var man1,man2:longword;
 var oxgn1,oxgn2,oxgnn:longword;
@@ -296,7 +296,9 @@ $65616E61,
 $73797263);
 var crewi:shortint;
 var crewb:boolean;
-var powerstat,powerzelta,powermax:longword;
+var sys,powerstat,powerstatmax,powerzelta:longword;
+var wponmax:longword;
+var wponcount:longint;
 
 begin
 for itemi:=0 to maxitem do itemb[itemi]:=-1;
@@ -313,11 +315,11 @@ data:=1;getaddr(baseaddr+$00513020,[$10],data);
 if data=0 then
   begin
   //for itemi:=0 to maxitem do if itemb[itemi]=0 then itemb[itemi]:=2;
-  maxsys:=0;
+  maxsys:=-1;
   repeat
   data:=0;
-  getaddr(baseaddr+$0051348C,[$18,$4*maxsys,$1C],data);
   maxsys:=maxsys+1;
+  getaddr(baseaddr+$0051348C,[$18,$4*maxsys,$1C],data);
   until data<>f2l(150);
   //getaddr(baseaddr+$0051348C,[$64],man1);
   //getaddr(baseaddr+$0051348C,[$68],man2);
@@ -326,6 +328,19 @@ if data=0 then
   getaddr(baseaddr+$0051348C,[$24,$1C4],oxgn1);
   getaddr(baseaddr+$0051348C,[$24,$1C8],oxgn2);
   oxgnn:=(oxgn2-oxgn1)div 4;
+  wponcount:=-1;
+  repeat
+  wponcount:=wponcount+1;
+  data:=0;
+  getaddr(baseaddr+$0051348C,[$48,$1C8,$4*wponcount,0],data);
+  until data<>$00D6C540;
+  wponmax:=0;
+  for addri:=0 to wponcount-1 do
+    begin
+    data:=0;
+    getaddr(baseaddr+$0051348C,[$48,$1C8,$4*addri,$F8],data);
+    wponmax:=wponmax+data;
+    end;
   for itemi:=1 to maxitem do
     begin
     if itemb[itemi]>=1 then
@@ -352,18 +367,23 @@ if data=0 then
           begin
           data:=0;
           setaddr(baseaddr+$0051348C,[$18,$4*addri,$11C],1000);
-          getaddr(baseaddr+$0051348C,[$18,$4*addri,$28],data);
-          if (data<>$70616577) and (data<>$6E6F7264) then
+          getaddr(baseaddr+$0051348C,[$18,$4*addri,$28],sys);
+          getaddr(baseaddr+$0051348C,[$18,$4*addri,$170],powerzelta);
+          getaddr(baseaddr+$0051348C,[$18,$4*addri,$100],powerstat);
+          getaddr(baseaddr+$0051348C,[$18,$4*addri,$104],powerstatmax);
+          if (sys=$70616577) then
+            setaddr(baseaddr+$0051348C,[$18,$4*addri,$54],powerstatmax-powerstat+wponmax)
+          else if (sys=$6E6F7264) then
+            setaddr(baseaddr+$0051348C,[$18,$4*addri,$54],powerstatmax*2-powerstat+4)
+          else
             begin
-            getaddr(baseaddr+$0051348C,[$18,$4*addri,$170],powerzelta);
-            getaddr(baseaddr+$0051348C,[$18,$4*addri,$100],powerstat);
-            getaddr(baseaddr+$0051348C,[$18,$4*addri,$54],powermax);
-            setaddr(baseaddr+$0051348C,[$18,$4*addri,$50],max(min(powerstat,powermax)-powerzelta,0));
+            setaddr(baseaddr+$0051348C,[$18,$4*addri,$54],powerstatmax*2-powerstat);
+            setaddr(baseaddr+$0051348C,[$18,$4*addri,$50],max(powerstatmax-powerzelta,0));
             end;
           end;
       istat:for addri:=0 to maxsys-1 do setaddr(baseaddr+$0051348C,[$18,$4*addri,$100],0,4);
       icldn:for addri:=0 to maxsys-1 do setaddr(baseaddr+$0051348C,[$18,$4*addri,$134],f2l(5));
-      iwpon:for addri:=0 to 3 do setaddr(baseaddr+$0051348C,[$48,$1C8,$4*addri,$62C],1);
+      iwpon:for addri:=0 to wponmax-1 do setaddr(baseaddr+$0051348C,[$48,$1C8,$4*addri,$62C],1);
       ihack:setaddr(baseaddr+$0051348C,[$3C,$7B0],0);
       ihide:setaddr(baseaddr+$0051348C,[$2C,$1CC],0);
       imind:begin
