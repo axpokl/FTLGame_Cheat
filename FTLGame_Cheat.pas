@@ -314,6 +314,7 @@ repeat
 data:=1;getaddr(baseaddr+$00513020,[$10],data);
 if data=0 then
   begin
+
   //for itemi:=0 to maxitem do if itemb[itemi]=0 then itemb[itemi]:=2;
   maxsys:=-1;
   repeat
@@ -335,7 +336,7 @@ if data=0 then
   getaddr(baseaddr+$0051348C,[$48,$1C8,$4*wponcount,0],data);
   until data<>$00D6C540;
   wponmax:=0;
-  for addri:=0 to wponcount-1 do
+  if wponcount>0 then for addri:=0 to wponcount-1 do
     begin
     data:=0;
     getaddr(baseaddr+$0051348C,[$48,$1C8,$4*addri,$F8],data);
@@ -383,7 +384,7 @@ if data=0 then
           end;
       istat:for addri:=0 to maxsys-1 do setaddr(baseaddr+$0051348C,[$18,$4*addri,$100],0,4);
       icldn:for addri:=0 to maxsys-1 do setaddr(baseaddr+$0051348C,[$18,$4*addri,$134],f2l(5));
-      iwpon:for addri:=0 to wponmax-1 do setaddr(baseaddr+$0051348C,[$48,$1C8,$4*addri,$62C],1);
+      iwpon:if wponcount>0 then for addri:=0 to wponcount-1 do setaddr(baseaddr+$0051348C,[$48,$1C8,$4*addri,$62C],1);
       ihack:setaddr(baseaddr+$0051348C,[$3C,$7B0],0);
       ihide:setaddr(baseaddr+$0051348C,[$2C,$1CC],0);
       imind:begin
