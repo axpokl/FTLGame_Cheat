@@ -26,7 +26,8 @@ Click the checkbox from left to lock the item
 | MIND | Sustain Mind Control | 0 | float |
 | BATTERY | Sustain Backup Battery | 0 | float |
 | TITAL | Instant Titan Weapon | Max | float |
-| HUMAN | Max Crew Health | 100 | float |
-| SKILL | Max Crew Skills |  | float |
 | OXYGEN | Max Oxygen | 100 | float |
+| HUMAN | Max Crew Health | 100 | float |
+| MOVE | Instant Crew Move | Max | float |
+| SKILL | Max Crew Skills | Max | float |
 

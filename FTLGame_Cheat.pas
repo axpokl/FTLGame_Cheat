@@ -159,10 +159,11 @@ const ihull=1;
       imind=16;
       ibatt=17;
       ittan=18;
-      ihumn=19;
-      iskil=20;
-      ioxyg=21;
-const maxitem=21;
+      ioxyg=19;
+      ihumn=20;
+      imove=21;
+      iskil=22;
+const maxitem=22;
 const itemc:array[0..maxitem]of ansistring=(
 'ALL',
 'HULL',
@@ -183,9 +184,10 @@ const itemc:array[0..maxitem]of ansistring=(
 'MIND',
 'BATTERY',
 'TITAN',
+'OXYGEN',
 'HUMAN',
-'SKILL',
-'OXYGEN');
+'MOVE',
+'SKILL');
 var itemb:array[0..maxitem]of shortint;
 var itemi:longword;
 const szw=160;szh=32;
@@ -397,47 +399,31 @@ if data=0 then
             getaddr(baseaddr+$0051348C,[$58,$0,$1C0,$8+4],data);
             setaddr(baseaddr+$0051348C,[$58,$0,$1C0,$8],longword(data-1));
             end;
-      ihumn:
-        begin
-        addri:=0;
-        addrm:=0;
-        repeat
-        data:=0;
-        crewb:=false;
-        getaddr(baseaddr+$00514E4C,[$4*addri,$1B8],data);
-        for crewi:=1 to 9 do if data=crew[crewi] then crewb:=true;
-        data:=0;
-        getaddr(baseaddr+$00514E4C,[$4*addri,$4],data);
-        if data<>0 then crewb:=false;
-        if crewb=true then
-          begin
-          addrm:=addrm+1;
-          setaddr(baseaddr+$00514E4C,[$4*addri,$28],0,4);
-          end;
-        addri:=addri+1;
-        until (addrm=maxman) or (data>1);
-        end;
-      iskil:
-        begin
-        addri:=0;
-        addrm:=0;
-        repeat
-        data:=0;
-        crewb:=false;
-        getaddr(baseaddr+$00514E4C,[$4*addri,$1B8],data);
-        for crewi:=1 to 9 do if data=crew[crewi] then crewb:=true;
-        data:=0;
-        getaddr(baseaddr+$00514E4C,[$4*addri,$4],data);
-        if data<>0 then crewb:=false;
-        if crewb=true then
-          begin
-          addrm:=addrm+1;
-          for addrj:=0 to 5 do setaddr(baseaddr+$00514E4C,[$4*addri,$314,$8*addrj],0,4);
-          end;
-        addri:=addri+1;
-        until (addrm=maxman) or (data>1);
-        end;
       ioxyg:for addri:=0 to oxgnn do setaddr(baseaddr+$0051348C,[$24,$1C4,$4*addri],f2l(100));
+      ihumn..iskil:
+        begin
+        addri:=0;
+        addrm:=0;
+        repeat
+        data:=0;
+        crewb:=false;
+        getaddr(baseaddr+$00514E4C,[$4*addri,$1B8],data);
+        for crewi:=1 to 9 do if data=crew[crewi] then crewb:=true;
+        data:=0;
+        getaddr(baseaddr+$00514E4C,[$4*addri,$4],data);
+        if data<>0 then crewb:=false;
+        if crewb=true then
+          begin
+          addrm:=addrm+1;
+          case itemi of
+            ihumn:setaddr(baseaddr+$00514E4C,[$4*addri,$28],0,4);
+            imove:begin setaddr(baseaddr+$00514E4C,[$4*addri,$8],0,$10);setaddr(baseaddr+$00514E4C,[$4*addri,$C],0,$10);end;
+            iskil:for addrj:=0 to 5 do setaddr(baseaddr+$00514E4C,[$4*addri,$314,$8*addrj],0,4);
+            end;
+          end;
+        addri:=addri+1;
+        until (addrm=maxman) or (data>1);
+        end;
       end;
 //    writeln('@',itemi,itemb[itemi]);
     end;
