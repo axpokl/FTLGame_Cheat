@@ -410,28 +410,29 @@ if data=0 then
         addri:=0;
         addrm:=0;
         repeat
-        data:=0;
         crewb:=false;
-{
-        getaddr(baseaddr+$00514E4C,[$4*addri,$1B8],data);
-        for crewi:=1 to 9 do if data=crew[crewi] then crewb:=true;
-        data:=0;
-        getaddr(baseaddr+$00514E4C,[$4*addri,$4],data);
-        if data<>0 then crewb:=false;
-}
+//        data:=0;
         data:=3;
-        getaddr(baseaddr+$0051348C,[$64,$4*addri,$9C,$38],data);
+//        getaddr(baseaddr+$0051348C,[$64,$4*addri,$9C,$38],data);
+//        getaddr(baseaddr+$00514E4C,[$4*addri,$1B8],data);
+        getaddr(baseaddr+$00514E4C,[$4*addri,$9C,$38],data);
+//        for crewi:=1 to 9 do if data=crew[crewi] then crewb:=true;
         crewb:=(data<>3);
+        data:=0;
+//        getaddr(baseaddr+$00514E4C,[$4*addri,$4],data);
+        getaddr(baseaddr+$00514E4C,[$4*addri,$0,$58],data);
+//        if data<>0 then crewb:=false;
+        if data<>$008D5630 then crewb:=false;
         if crewb=true then
           begin
           addrm:=addrm+1;
           case itemi of
-//            ihumn:setaddr(baseaddr+$00514E4C,[$4*addri,$28],0,4);
-            ihumn:setaddr(baseaddr+$0051348C,[$64,$4*addri,$28],0,4);
-//            imove:begin setaddr(baseaddr+$00514E4C,[$4*addri,$8],0,$10);setaddr(baseaddr+$00514E4C,[$4*addri,$C],0,$10);end;
-            imove:begin setaddr(baseaddr+$0051348C,[$64,$4*addri,$8],0,$10);setaddr(baseaddr+$0051348C,[$64,$4*addri,$C],0,$10);end;
-//            iskil:for addrj:=0 to 5 do setaddr(baseaddr+$00514E4C,[$4*addri,$314,$8*addrj],0,4);
-            iskil:for addrj:=0 to 5 do setaddr(baseaddr+$0051348C,[$64,$4*addri,$314,$8*addrj],0,4);
+            ihumn:setaddr(baseaddr+$00514E4C,[$4*addri,$28],0,4);
+//            ihumn:setaddr(baseaddr+$0051348C,[$64,$4*addri,$28],0,4);
+            imove:begin setaddr(baseaddr+$00514E4C,[$4*addri,$8],0,$10);setaddr(baseaddr+$00514E4C,[$4*addri,$C],0,$10);end;
+//            imove:begin setaddr(baseaddr+$0051348C,[$64,$4*addri,$8],0,$10);setaddr(baseaddr+$0051348C,[$64,$4*addri,$C],0,$10);end;
+            iskil:for addrj:=0 to 5 do setaddr(baseaddr+$00514E4C,[$4*addri,$314,$8*addrj],0,4);
+//            iskil:for addrj:=0 to 5 do setaddr(baseaddr+$0051348C,[$64,$4*addri,$314,$8*addrj],0,4);
             end;
           end;
         addri:=addri+1;
