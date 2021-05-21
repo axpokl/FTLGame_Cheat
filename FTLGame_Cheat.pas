@@ -341,7 +341,7 @@ if data=0 then
   wponcount:=wponcount+1;
   data:=0;
   getaddr(baseaddr+$0051348C,[$48,$1C8,$4*wponcount,0],data);
-  until data<>$00D6C540;
+  until (data and $FFFF)<>$C540;
   wponmax:=0;
   if wponcount>0 then for addri:=0 to wponcount-1 do
     begin
