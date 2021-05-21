@@ -111,7 +111,9 @@ if length(offset)>0 then
   begin
   addri:=length(offset)-1;
   {$Q-}addrp:=addrl+offset[addri];{$Q+}
-  end;
+  end
+else
+  addrp:=addrl;
 addr0:=addrp;
 end;
 
@@ -121,6 +123,7 @@ begin
 getaddr:=getaddr0(base,offset,addr0);
 if getaddr=false then exit;
 if length(offset)>0 then getaddr:=ReadProcessMemory(phnd,pointer(addr0),@data,sizeof(data),addrnum)
+else data:=addr0;
 end;
 
 function setaddr(base:longword;offset:array of longint;data:longword):boolean;
@@ -136,7 +139,7 @@ var addr0:longword;
 begin
 setaddr:=getaddr0(base,offset,addr0);
 if setaddr=false then exit;
-if length(offset)>0 then setaddr:=ReadProcessMemory(phnd,pointer(addr0+offset0),@data,sizeof(data),addrnum);
+if length(offset)>0 then setaddr:=ReadProcessMemory(phnd,pointer(longword(addr0+offset0)),@data,sizeof(data),addrnum);
 if setaddr=false then exit;
 if length(offset)>0 then setaddr:=WriteProcessMemory(phnd,pointer(addr0),@data,sizeof(data),addrnum);
 end;
@@ -286,6 +289,7 @@ var maxsys:longint;
 var maxman:longword;
 //var man1,man2:longword;
 var oxgn1,oxgn2,oxgnn:longword;
+{
 const crew:array[1..9]of longword=(
 $616D7568,
 $69676E65,
@@ -297,6 +301,7 @@ $746E616D,
 $65616E61,
 $73797263);
 var crewi:shortint;
+}
 var crewb:boolean;
 var sys,powerstat,powerstatmax,powerzelta:longword;
 var wponmax:longword;
@@ -316,7 +321,6 @@ repeat
 data:=1;getaddr(baseaddr+$00513020,[$10],data);
 if data=0 then
   begin
-
   //for itemi:=0 to maxitem do if itemb[itemi]=0 then itemb[itemi]:=2;
   maxsys:=-1;
   repeat
@@ -327,7 +331,8 @@ if data=0 then
   //getaddr(baseaddr+$0051348C,[$64],man1);
   //getaddr(baseaddr+$0051348C,[$68],man2);
   //maxman:=(man2-man1)div 4;
-  getaddr(baseaddr+$00513020,[$C,$1288],maxman);
+  //getaddr(baseaddr+$00513020,[$C,$1288],maxman);
+  getaddr(baseaddr+$00514E40,[],maxman);
   getaddr(baseaddr+$0051348C,[$24,$1C4],oxgn1);
   getaddr(baseaddr+$0051348C,[$24,$1C8],oxgn2);
   oxgnn:=(oxgn2-oxgn1)div 4;
@@ -407,22 +412,30 @@ if data=0 then
         repeat
         data:=0;
         crewb:=false;
+{
         getaddr(baseaddr+$00514E4C,[$4*addri,$1B8],data);
         for crewi:=1 to 9 do if data=crew[crewi] then crewb:=true;
         data:=0;
         getaddr(baseaddr+$00514E4C,[$4*addri,$4],data);
         if data<>0 then crewb:=false;
+}
+        data:=3;
+        getaddr(baseaddr+$0051348C,[$64,$4*addri,$9C,$38],data);
+        crewb:=(data<>3);
         if crewb=true then
           begin
           addrm:=addrm+1;
           case itemi of
-            ihumn:setaddr(baseaddr+$00514E4C,[$4*addri,$28],0,4);
-            imove:begin setaddr(baseaddr+$00514E4C,[$4*addri,$8],0,$10);setaddr(baseaddr+$00514E4C,[$4*addri,$C],0,$10);end;
-            iskil:for addrj:=0 to 5 do setaddr(baseaddr+$00514E4C,[$4*addri,$314,$8*addrj],0,4);
+//            ihumn:setaddr(baseaddr+$00514E4C,[$4*addri,$28],0,4);
+            ihumn:setaddr(baseaddr+$0051348C,[$64,$4*addri,$28],0,4);
+//            imove:begin setaddr(baseaddr+$00514E4C,[$4*addri,$8],0,$10);setaddr(baseaddr+$00514E4C,[$4*addri,$C],0,$10);end;
+            imove:begin setaddr(baseaddr+$0051348C,[$64,$4*addri,$8],0,$10);setaddr(baseaddr+$0051348C,[$64,$4*addri,$C],0,$10);end;
+//            iskil:for addrj:=0 to 5 do setaddr(baseaddr+$00514E4C,[$4*addri,$314,$8*addrj],0,4);
+            iskil:for addrj:=0 to 5 do setaddr(baseaddr+$0051348C,[$64,$4*addri,$314,$8*addrj],0,4);
             end;
           end;
         addri:=addri+1;
-        until (addrm=maxman) or (data>1);
+        until (addrm=maxman);
         end;
       end;
 //    writeln('@',itemi,itemb[itemi]);
