@@ -157,16 +157,17 @@ const ihull=1;
       istat=11;
       icldn=12;
       iwpon=13;
-      ihack=14;
-      ihide=15;
-      imind=16;
-      ibatt=17;
-      ittan=18;
-      ioxyg=19;
-      ihumn=20;
-      imove=21;
-      iskil=22;
-const maxitem=22;
+      iclon=14;
+      ihack=15;
+      ihide=16;
+      imind=17;
+      ibatt=18;
+      ittan=19;
+      ioxyg=20;
+      ihumn=21;
+      imove=22;
+      iskil=23;
+const maxitem=23;
 const itemc:array[0..maxitem]of ansistring=(
 'ALL',
 'HULL',
@@ -182,6 +183,7 @@ const itemc:array[0..maxitem]of ansistring=(
 'STATUS',
 'COOLDOWN',
 'WEAPON',
+'CLONE',
 'HACKING',
 'INVISIBLE',
 'MIND',
@@ -392,6 +394,11 @@ if data=0 then
       istat:for addri:=0 to maxsys-1 do setaddr(baseaddr+$0051348C,[$18,$4*addri,$100],0,4);
       icldn:for addri:=0 to maxsys-1 do setaddr(baseaddr+$0051348C,[$18,$4*addri,$134],f2l(5));
       iwpon:if wponcount>0 then for addri:=0 to wponcount-1 do setaddr(baseaddr+$0051348C,[$48,$1C8,$4*addri,$62C],1);
+      iclon:begin
+            data:=0;
+            getaddr(baseaddr+$0051348C,[$38,$1C0],data);
+            if l2f(data)>0 then setaddr(baseaddr+$0051348C,[$38,$1C0],0,8);
+            end;
       ihack:setaddr(baseaddr+$0051348C,[$3C,$7B0],0);
       ihide:setaddr(baseaddr+$0051348C,[$2C,$1CC],0);
       imind:begin
@@ -411,18 +418,20 @@ if data=0 then
         addrm:=0;
         repeat
         crewb:=false;
-//        data:=0;
-        data:=3;
+        data:=0;
+//        data:=3;
 //        getaddr(baseaddr+$0051348C,[$64,$4*addri,$9C,$38],data);
 //        getaddr(baseaddr+$00514E4C,[$4*addri,$1B8],data);
-        getaddr(baseaddr+$00514E4C,[$4*addri,$9C,$38],data);
+//        getaddr(baseaddr+$00514E4C,[$4*addri,$9C,$38],data);
+        getaddr(baseaddr+$00514E4C,[$4*addri,$53C],data);
 //        for crewi:=1 to 9 do if data=crew[crewi] then crewb:=true;
-        crewb:=(data<>3);
+        crewb:=((data and $FFFF)=1);
         data:=0;
 //        getaddr(baseaddr+$00514E4C,[$4*addri,$4],data);
         getaddr(baseaddr+$00514E4C,[$4*addri,$0,$58],data);
 //        if data<>0 then crewb:=false;
         if data<>$008D5630 then crewb:=false;
+//writeln(addri,#9,addrm,#9,i2hs(data));
         if crewb=true then
           begin
           addrm:=addrm+1;
@@ -436,6 +445,7 @@ if data=0 then
             end;
           end;
         addri:=addri+1;
+//readln();
         until (addrm=maxman);
         end;
       end;
