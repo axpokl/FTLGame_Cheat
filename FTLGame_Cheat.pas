@@ -427,10 +427,10 @@ if data=0 then
 //        for crewi:=1 to 9 do if data=crew[crewi] then crewb:=true;
         crewb:=((data and $FFFF)=1);
         data:=0;
-//        getaddr(baseaddr+$00514E4C,[$4*addri,$4],data);
-        getaddr(baseaddr+$00514E4C,[$4*addri,$0,$58],data);
-//        if data<>0 then crewb:=false;
-        if data<>$008D5630 then crewb:=false;
+        getaddr(baseaddr+$00514E4C,[$4*addri,$4],data);
+//        getaddr(baseaddr+$00514E4C,[$4*addri,$0,$58],data);
+        if data<>0 then crewb:=false;
+//        if data<>$008D5630 then crewb:=false;
 //writeln(addri,#9,addrm,#9,i2hs(data));
         if crewb=true then
           begin
