@@ -4,19 +4,30 @@ program FTLGame_Cheat;
 
 uses JwaPsApi,windows,display;
 
+var multb:boolean=false;
 var phnd:HANDLE;
 var flthw:hwnd;
 
 function EnumWindowsProc(hw:HWND;lp:LParam):LongBool;StdCall;
 const fltclass='SILWindowClass';
+      flttitle='Mult';
 var position:byte;
     fltname:pchar;
 begin
 GetMem(fltname,256);
 GetClassName(hw,fltname,256);
 position:=pos(fltclass,fltname);
-if position>0 then flthw:=hw;
-//if position>0 then writeln(hw,#9,fltname);
+if position>0 then
+  begin
+  flthw:=hw;
+  writeln(hw,#9,fltname);
+  position:=0;
+  GetWindowTextA(flthw,fltname,256);
+  position:=pos(flttitle,fltname);
+  multb:=(position>0);
+  writeln(fltname);
+//  writeln(multb);
+  end;
 EnumWindowsProc:=true;
 end;
 
@@ -32,6 +43,7 @@ end;
 
 procedure getwin();
 const fltclass='SILWindowClass';
+      flttitle='Mult';
 var position:byte;
     fltname:pchar;
 begin
@@ -284,6 +296,8 @@ l2f:=f;
 end;
 
 var baseaddr:longword;
+var baseoffset:longword;
+var baseoffset_engy:longword;
 var data:longword;
 var addri,addrj,addrm:longword;
 
@@ -308,6 +322,7 @@ var crewb:boolean;
 var sys,powerstat,powerstatmax,powerzelta:longword;
 var wponmax:longword;
 var wponcount:longint;
+var wponid:longword;
 
 begin
 for itemi:=0 to maxitem do itemb[itemi]:=-1;
@@ -318,9 +333,12 @@ for itemi:=0 to maxitem do itemb[itemi]:=-1;
 getwin2();
 getphnd();
 baseaddr:=getbaseaddr();
-if getaddr(baseaddr+$0051348C,[],data) then for itemi:=0 to maxitem do itemb[itemi]:=0;
+if multb then baseoffset:=$004C548C else baseoffset:=$0051348C;
+if multb then wponid:=$E78C else wponid:=$C540;
+if multb then baseoffset_engy:=$75B4 else baseoffset_engy:=$7694;
+if getaddr(baseaddr+baseoffset,[],data) then for itemi:=0 to maxitem do itemb[itemi]:=0;
 repeat
-data:=1;getaddr(baseaddr+$00513020,[$10],data);
+data:=1;getaddr(baseaddr+baseoffset-$46C,[$10],data);
 if data=0 then
   begin
   //for itemi:=0 to maxitem do if itemb[itemi]=0 then itemb[itemi]:=2;
@@ -328,90 +346,90 @@ if data=0 then
   repeat
   data:=0;
   maxsys:=maxsys+1;
-  getaddr(baseaddr+$0051348C,[$18,$4*maxsys,$1C],data);
+  getaddr(baseaddr+baseoffset,[$18,$4*maxsys,$1C],data);
   until data<>f2l(150);
-  //getaddr(baseaddr+$0051348C,[$64],man1);
-  //getaddr(baseaddr+$0051348C,[$68],man2);
+  //getaddr(baseaddr+baseoffset,[$64],man1);
+  //getaddr(baseaddr+baseoffset,[$68],man2);
   //maxman:=(man2-man1)div 4;
-  //getaddr(baseaddr+$00513020,[$C,$1288],maxman);
-  getaddr(baseaddr+$00514E40,[],maxman);
-  getaddr(baseaddr+$0051348C,[$24,$1C4],oxgn1);
-  getaddr(baseaddr+$0051348C,[$24,$1C8],oxgn2);
+  //getaddr(baseaddr+baseoffset-46C,[$C,$1288],maxman);
+  getaddr(baseaddr+baseoffset+$19B4,[],maxman);
+  getaddr(baseaddr+baseoffset,[$24,$1C4],oxgn1);
+  getaddr(baseaddr+baseoffset,[$24,$1C8],oxgn2);
   oxgnn:=(oxgn2-oxgn1)div 4;
   wponcount:=-1;
   repeat
   wponcount:=wponcount+1;
   data:=0;
-  getaddr(baseaddr+$0051348C,[$48,$1C8,$4*wponcount,0],data);
-  until (data and $FFFF)<>$C540;
+  getaddr(baseaddr+baseoffset,[$48,$1C8,$4*wponcount,0],data);
+  until (data and $FFFF)<>wponid;
   wponmax:=0;
   if wponcount>0 then for addri:=0 to wponcount-1 do
     begin
     data:=0;
-    getaddr(baseaddr+$0051348C,[$48,$1C8,$4*addri,$F8],data);
+    getaddr(baseaddr+baseoffset,[$48,$1C8,$4*addri,$F8],data);
     wponmax:=wponmax+data;
     end;
   for itemi:=1 to maxitem do
     begin
     if itemb[itemi]>=1 then
       case itemi of
-      ihull:setaddr(baseaddr+$0051348C,[$CC],30);
+      ihull:setaddr(baseaddr+baseoffset,[$CC],30);
       ishld:begin
             data:=0;
-            getaddr(baseaddr+$0051348C,[$44,$1E8],data);
-            if data>0 then setaddr(baseaddr+$0051348C,[$44,$1E8],f2l(2));
+            getaddr(baseaddr+baseoffset,[$44,$1E8],data);
+            if data>0 then setaddr(baseaddr+baseoffset,[$44,$1E8],f2l(2));
             end;
-      ijump:setaddr(baseaddr+$0051348C,[$48C],f2l(85));
-      irebl:setaddr(baseaddr+$00513498,[$80],longword(-1000));
-      iengy:setaddr(baseaddr+$0051AB20,[$0],0);
-      iscrp:setaddr(baseaddr+$0051348C,[$4D4],99999);
-      ifuel:setaddr(baseaddr+$0051348C,[$494],999);
-      imsle:setaddr(baseaddr+$0051348C,[$48,$1E8],999);
+      ijump:setaddr(baseaddr+baseoffset,[$48C],f2l(85));
+      irebl:setaddr(baseaddr+baseoffset+$C,[$80],longword(-1000));
+      iengy:setaddr(baseaddr+baseoffset+baseoffset_engy,[$0],0);
+      iscrp:setaddr(baseaddr+baseoffset,[$4D4],99999);
+      ifuel:setaddr(baseaddr+baseoffset,[$494],999);
+      imsle:setaddr(baseaddr+baseoffset,[$48,$1E8],999);
       idron:
         begin
-        setaddr(baseaddr+$0051348C,[$800],999);
-        setaddr(baseaddr+$0051348C,[$4C,$1CC],999);
+        setaddr(baseaddr+baseoffset,[$800],999);
+        setaddr(baseaddr+baseoffset,[$4C,$1CC],999);
         end;
       ipwer:
         for addri:=0 to maxsys-1 do
           begin
           data:=0;
-          setaddr(baseaddr+$0051348C,[$18,$4*addri,$11C],1000);
-          getaddr(baseaddr+$0051348C,[$18,$4*addri,$28],sys);
-          getaddr(baseaddr+$0051348C,[$18,$4*addri,$170],powerzelta);
-          getaddr(baseaddr+$0051348C,[$18,$4*addri,$100],powerstat);
-          getaddr(baseaddr+$0051348C,[$18,$4*addri,$104],powerstatmax);
+          setaddr(baseaddr+baseoffset,[$18,$4*addri,$11C],1000);
+          getaddr(baseaddr+baseoffset,[$18,$4*addri,$28],sys);
+          getaddr(baseaddr+baseoffset,[$18,$4*addri,$170],powerzelta);
+          getaddr(baseaddr+baseoffset,[$18,$4*addri,$100],powerstat);
+          getaddr(baseaddr+baseoffset,[$18,$4*addri,$104],powerstatmax);
           if (sys=$70616577) then
-            setaddr(baseaddr+$0051348C,[$18,$4*addri,$54],powerstatmax-powerstat+wponmax)
+            setaddr(baseaddr+baseoffset,[$18,$4*addri,$54],powerstatmax-powerstat+wponmax)
           else if (sys=$6E6F7264) then
-            setaddr(baseaddr+$0051348C,[$18,$4*addri,$54],powerstatmax*2-powerstat+4)
+            setaddr(baseaddr+baseoffset,[$18,$4*addri,$54],powerstatmax*2-powerstat+4)
           else
             begin
-            setaddr(baseaddr+$0051348C,[$18,$4*addri,$54],powerstatmax*2-powerstat);
-            setaddr(baseaddr+$0051348C,[$18,$4*addri,$50],max(powerstatmax-powerzelta,0));
+            setaddr(baseaddr+baseoffset,[$18,$4*addri,$54],powerstatmax*2-powerstat);
+            setaddr(baseaddr+baseoffset,[$18,$4*addri,$50],max(powerstatmax-powerzelta,0));
             end;
           end;
-      istat:for addri:=0 to maxsys-1 do setaddr(baseaddr+$0051348C,[$18,$4*addri,$100],0,4);
-      icldn:for addri:=0 to maxsys-1 do setaddr(baseaddr+$0051348C,[$18,$4*addri,$134],f2l(5));
-      iwpon:if wponcount>0 then for addri:=0 to wponcount-1 do setaddr(baseaddr+$0051348C,[$48,$1C8,$4*addri,$62C],1);
+      istat:for addri:=0 to maxsys-1 do setaddr(baseaddr+baseoffset,[$18,$4*addri,$100],0,4);
+      icldn:for addri:=0 to maxsys-1 do setaddr(baseaddr+baseoffset,[$18,$4*addri,$134],f2l(5));
+      iwpon:if wponcount>0 then for addri:=0 to wponcount-1 do setaddr(baseaddr+baseoffset,[$48,$1C8,$4*addri,$62C],1);
       iclon:begin
             data:=0;
-            getaddr(baseaddr+$0051348C,[$38,$1C0],data);
-            if l2f(data)>0 then setaddr(baseaddr+$0051348C,[$38,$1C0],0,8);
+            getaddr(baseaddr+baseoffset,[$38,$1C0],data);
+            if l2f(data)>0 then setaddr(baseaddr+baseoffset,[$38,$1C0],0,8);
             end;
-      ihack:setaddr(baseaddr+$0051348C,[$3C,$7B0],0);
-      ihide:setaddr(baseaddr+$0051348C,[$2C,$1CC],0);
+      ihack:setaddr(baseaddr+baseoffset,[$3C,$7B0],0);
+      ihide:setaddr(baseaddr+baseoffset,[$2C,$1CC],0);
       imind:begin
             data:=0;
-            getaddr(baseaddr+$0051348C,[$34,$1C0],data);
-            if l2f(data)<14 then setaddr(baseaddr+$0051348C,[$34,$1C0],0);
+            getaddr(baseaddr+baseoffset,[$34,$1C0],data);
+            if l2f(data)<14 then setaddr(baseaddr+baseoffset,[$34,$1C0],0);
             end;
-      ibatt:setaddr(baseaddr+$0051348C,[$30,$1CC],0);
+      ibatt:setaddr(baseaddr+baseoffset,[$30,$1CC],0);
       ittan:begin
-            getaddr(baseaddr+$0051348C,[$58,$0,$1C0,$8+4],data);
-            setaddr(baseaddr+$0051348C,[$58,$0,$1C0,$8],longword(data-1));
+            getaddr(baseaddr+baseoffset,[$58,$0,$1C0,$8+4],data);
+            setaddr(baseaddr+baseoffset,[$58,$0,$1C0,$8],longword(data-1));
             end;
-      ioxyg:for addri:=0 to oxgnn do setaddr(baseaddr+$0051348C,[$24,$1C4,$4*addri],f2l(100));
+      ioxyg:for addri:=0 to oxgnn do setaddr(baseaddr+baseoffset,[$24,$1C4,$4*addri],f2l(100));
       ihumn..iskil:
         begin
         addri:=0;
@@ -420,33 +438,35 @@ if data=0 then
         crewb:=false;
         data:=0;
 //        data:=3;
-//        getaddr(baseaddr+$0051348C,[$64,$4*addri,$9C,$38],data);
-//        getaddr(baseaddr+$00514E4C,[$4*addri,$1B8],data);
-//        getaddr(baseaddr+$00514E4C,[$4*addri,$9C,$38],data);
-        getaddr(baseaddr+$00514E4C,[$4*addri,$53C],data);
+//        getaddr(baseaddr+baseoffset,[$64,$4*addri,$9C,$38],data);
+//        getaddr(baseaddr+baseoffset+$19C0,[$4*addri,$1B8],data);
+//        getaddr(baseaddr+baseoffset+$19C0,[$4*addri,$9C,$38],data);
+//        getaddr(baseaddr+baseoffset+$19C0,[$4*addri,$53C],data);
 //        for crewi:=1 to 9 do if data=crew[crewi] then crewb:=true;
-        crewb:=((data and $FFFF)=1);
-        data:=0;
-        getaddr(baseaddr+$00514E4C,[$4*addri,$4],data);
-//        getaddr(baseaddr+$00514E4C,[$4*addri,$0,$58],data);
-        if data<>0 then crewb:=false;
+//        crewb:=((data and $FFFF)=1);
+        data:=1;
+        getaddr(baseaddr+baseoffset,[$64,$4*addri,$4],data);
+//        getaddr(baseaddr+baseoffset+$19C0,[$4*addri,$4],data);
+//        getaddr(baseaddr+baseoffset+$19C0,[$4*addri,$0,$58],data);
+//        if data<>0 then crewb:=false;
+        crewb:=(data=0);
 //        if data<>$008D5630 then crewb:=false;
 //writeln(addri,#9,addrm,#9,i2hs(data));
         if crewb=true then
           begin
           addrm:=addrm+1;
           case itemi of
-            ihumn:setaddr(baseaddr+$00514E4C,[$4*addri,$28],0,4);
-//            ihumn:setaddr(baseaddr+$0051348C,[$64,$4*addri,$28],0,4);
-            imove:begin setaddr(baseaddr+$00514E4C,[$4*addri,$8],0,$10);setaddr(baseaddr+$00514E4C,[$4*addri,$C],0,$10);end;
-//            imove:begin setaddr(baseaddr+$0051348C,[$64,$4*addri,$8],0,$10);setaddr(baseaddr+$0051348C,[$64,$4*addri,$C],0,$10);end;
-            iskil:for addrj:=0 to 5 do setaddr(baseaddr+$00514E4C,[$4*addri,$314,$8*addrj],0,4);
-//            iskil:for addrj:=0 to 5 do setaddr(baseaddr+$0051348C,[$64,$4*addri,$314,$8*addrj],0,4);
+            ihumn:setaddr(baseaddr+baseoffset,[$64,$4*addri,$28],0,4);
+//            ihumn:setaddr(baseaddr+baseoffset+$19C0,[$4*addri,$28],0,4);
+            imove:begin setaddr(baseaddr+baseoffset,[$64,$4*addri,$8],0,$10);setaddr(baseaddr+baseoffset,[$64,$4*addri,$C],0,$10);end;
+//            imove:begin setaddr(baseaddr+baseoffset+$19C0,[$4*addri,$8],0,$10);setaddr(baseaddr+baseoffset+$19C0,[$4*addri,$C],0,$10);end;
+            iskil:for addrj:=0 to 5 do setaddr(baseaddr+baseoffset,[$64,$4*addri,$314,$8*addrj],0,4);
+//            iskil:for addrj:=0 to 5 do setaddr(baseaddr+baseoffset+$19C0,[$4*addri,$314,$8*addrj],0,4);
             end;
           end;
         addri:=addri+1;
 //readln();
-        until (addrm=maxman);
+        until (addrm=maxman) or (addri>=20);
         end;
       end;
 //    writeln('@',itemi,itemb[itemi]);
@@ -455,7 +475,7 @@ if data=0 then
   sleep(1);
   end;
 sleep(1);
-until not(getaddr(baseaddr+$0051348C,[],data)) or (not(iswin()));
+until not(getaddr(baseaddr+baseoffset,[],data)) or (not(iswin()));
 sleep(1);
 until not(iswin());
 {
