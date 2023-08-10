@@ -20,12 +20,12 @@ position:=pos(fltclass,fltname);
 if position>0 then
   begin
   flthw:=hw;
-  writeln(hw,#9,fltname);
+//  writeln(hw,#9,fltname);
   position:=0;
   GetWindowTextA(flthw,fltname,256);
   position:=pos(flttitle,fltname);
   multb:=(position>0);
-  writeln(fltname);
+//  writeln(fltname);
 //  writeln(multb);
   end;
 EnumWindowsProc:=true;
