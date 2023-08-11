@@ -450,8 +450,11 @@ if data=0 then
 //        getaddr(baseaddr+baseoffset+$19C0,[$4*addri,$0,$58],data);
 //        if data<>0 then crewb:=false;
         crewb:=(data=0);
-//        if data<>$008D5630 then crewb:=false;
-//writeln(addri,#9,addrm,#9,i2hs(data));
+        getaddr(baseaddr+baseoffset,[$64,$4*addri,$0],data);
+        if data and $FFFF<>$B58C then crewb:=false;
+        getaddr(baseaddr+baseoffset,[$64,$4*addri,-$8],data);
+        if data and $FFFF<>$208C then crewb:=false;
+//        writeln(data,#9,crewb);
         if crewb=true then
           begin
           addrm:=addrm+1;
