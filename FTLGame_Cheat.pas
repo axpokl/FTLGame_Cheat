@@ -452,8 +452,6 @@ if data=0 then
         crewb:=(data=0);
         getaddr(baseaddr+baseoffset,[$64,$4*addri,$0],data);
         if data and $FFFF<>$B58C then crewb:=false;
-        getaddr(baseaddr+baseoffset,[$64,$4*addri,-$8],data);
-        if data and $FFFF<>$208C then crewb:=false;
 //        writeln(data,#9,crewb);
         if crewb=true then
           begin
