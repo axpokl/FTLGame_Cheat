@@ -319,7 +319,7 @@ $73797263);
 var crewi:shortint;
 }
 var crewb:boolean;
-var sys,powerstat,powerstatmax,powerzelta:longword;
+var sys,power,powermax,powerstat,powerzelta:longword;
 var wponmax:longword;
 var wponcount:longint;
 var wponid:longword;
@@ -396,18 +396,20 @@ if data=0 then
           data:=0;
           setaddr(baseaddr+baseoffset,[$18,$4*addri,$11C],1000);
           getaddr(baseaddr+baseoffset,[$18,$4*addri,$28],sys);
+          getaddr(baseaddr+baseoffset,[$18,$4*addri,$1A0],powermax);
           getaddr(baseaddr+baseoffset,[$18,$4*addri,$170],powerzelta);
           getaddr(baseaddr+baseoffset,[$18,$4*addri,$100],powerstat);
-          getaddr(baseaddr+baseoffset,[$18,$4*addri,$104],powerstatmax);
-          if (sys=$70616577) then
-            setaddr(baseaddr+baseoffset,[$18,$4*addri,$54],powerstatmax-powerstat+wponmax)
-          else if (sys=$6E6F7264) then
-            setaddr(baseaddr+baseoffset,[$18,$4*addri,$54],powerstatmax*2-powerstat+4)
+          if (sys=$70616577) then power:=wponmax
+          else if (sys=$6E6F7264) then power:=powermax*2-powerstat+4
           else
             begin
-            setaddr(baseaddr+baseoffset,[$18,$4*addri,$54],powerstatmax*2-powerstat);
-            setaddr(baseaddr+baseoffset,[$18,$4*addri,$50],max(powerstatmax-powerzelta,0));
+            power:=powermax;
+            setaddr(baseaddr+baseoffset,[$18,$4*addri,$50],max(powermax-powerzelta,0));
+            setaddr(baseaddr+baseoffset,[$18,$4*addri,$16C],max(powermax-powerzelta,0));
             end;
+          setaddr(baseaddr+baseoffset,[$18,$4*addri,$54],power);
+          setaddr(baseaddr+baseoffset,[$18,$4*addri,$104],power);
+          setaddr(baseaddr+baseoffset,[$18,$4*addri,$100],0,4);
           end;
       istat:for addri:=0 to maxsys-1 do setaddr(baseaddr+baseoffset,[$18,$4*addri,$100],0,4);
       icldn:for addri:=0 to maxsys-1 do setaddr(baseaddr+baseoffset,[$18,$4*addri,$134],f2l(5));
@@ -445,24 +447,25 @@ if data=0 then
 //        for crewi:=1 to 9 do if data=crew[crewi] then crewb:=true;
 //        crewb:=((data and $FFFF)=1);
         data:=1;
-        getaddr(baseaddr+baseoffset,[$64,$4*addri,$4],data);
-//        getaddr(baseaddr+baseoffset+$19C0,[$4*addri,$4],data);
+//        getaddr(baseaddr+baseoffset,[$64,$4*addri,$4],data);
+        getaddr(baseaddr+baseoffset+$19C0,[$4*addri,$4],data);
 //        getaddr(baseaddr+baseoffset+$19C0,[$4*addri,$0,$58],data);
 //        if data<>0 then crewb:=false;
         crewb:=(data=0);
-        getaddr(baseaddr+baseoffset,[$64,$4*addri,$0],data);
+//        getaddr(baseaddr+baseoffset,[$64,$4*addri,$0],data);
+        getaddr(baseaddr+baseoffset+$19C0,[$4*addri,$0],data);
         if data and $FFFF<>$B58C then crewb:=false;
 //        writeln(data,#9,crewb);
         if crewb=true then
           begin
           addrm:=addrm+1;
           case itemi of
-            ihumn:setaddr(baseaddr+baseoffset,[$64,$4*addri,$28],0,4);
-//            ihumn:setaddr(baseaddr+baseoffset+$19C0,[$4*addri,$28],0,4);
-            imove:begin setaddr(baseaddr+baseoffset,[$64,$4*addri,$8],0,$10);setaddr(baseaddr+baseoffset,[$64,$4*addri,$C],0,$10);end;
-//            imove:begin setaddr(baseaddr+baseoffset+$19C0,[$4*addri,$8],0,$10);setaddr(baseaddr+baseoffset+$19C0,[$4*addri,$C],0,$10);end;
-            iskil:for addrj:=0 to 5 do setaddr(baseaddr+baseoffset,[$64,$4*addri,$314,$8*addrj],0,4);
-//            iskil:for addrj:=0 to 5 do setaddr(baseaddr+baseoffset+$19C0,[$4*addri,$314,$8*addrj],0,4);
+//            ihumn:setaddr(baseaddr+baseoffset,[$64,$4*addri,$28],0,4);
+            ihumn:setaddr(baseaddr+baseoffset+$19C0,[$4*addri,$28],0,4);
+//            imove:begin setaddr(baseaddr+baseoffset,[$64,$4*addri,$8],0,$10);setaddr(baseaddr+baseoffset,[$64,$4*addri,$C],0,$10);end;
+            imove:begin setaddr(baseaddr+baseoffset+$19C0,[$4*addri,$8],0,$10);setaddr(baseaddr+baseoffset+$19C0,[$4*addri,$C],0,$10);end;
+//            iskil:for addrj:=0 to 5 do setaddr(baseaddr+baseoffset,[$64,$4*addri,$314,$8*addrj],0,4);
+            iskil:for addrj:=0 to 5 do setaddr(baseaddr+baseoffset+$19C0,[$4*addri,$314,$8*addrj],0,4);
             end;
           end;
         addri:=addri+1;
