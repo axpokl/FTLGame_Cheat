@@ -111,12 +111,12 @@ function getaddr0(base:longword;offset:array of longint;var addr0:longword):bool
 var addri:shortint;
 var addrl,addrp:longword;
 begin
-getaddr0:=ReadProcessMemory(phnd,pointer(base),@addrl,sizeof(addrl),addrnum);
+getaddr0:=ReadProcessMemory(phnd,pointer(PtrUInt(base)),@addrl,sizeof(addrl),addrnum);
 if getaddr0=false then exit;
 for addri:=0 to length(offset)-2 do
   begin
   {$Q-}addrp:=addrl+offset[addri];{$Q+}
-  getaddr0:=ReadProcessMemory(phnd,pointer(addrp),@addrl,sizeof(addrl),addrnum);
+  getaddr0:=ReadProcessMemory(phnd,pointer(PtrUInt(addrp)),@addrl,sizeof(addrl),addrnum);
   if getaddr0=false then exit;
   end;
 if length(offset)>0 then
@@ -134,7 +134,7 @@ var addr0:longword;
 begin
 getaddr:=getaddr0(base,offset,addr0);
 if getaddr=false then exit;
-if length(offset)>0 then getaddr:=ReadProcessMemory(phnd,pointer(addr0),@data,sizeof(data),addrnum)
+if length(offset)>0 then getaddr:=ReadProcessMemory(phnd,pointer(PtrUInt(addr0)),@data,sizeof(data),addrnum)
 else data:=addr0;
 end;
 
@@ -143,7 +143,7 @@ var addr0:longword;
 begin
 setaddr:=getaddr0(base,offset,addr0);
 if setaddr=false then exit;
-if length(offset)>0 then setaddr:=WriteProcessMemory(phnd,pointer(addr0),@data,sizeof(data),addrnum);
+if length(offset)>0 then setaddr:=WriteProcessMemory(phnd,pointer(PtrUInt(addr0)),@data,sizeof(data),addrnum);
 end;
 
 function setaddr(base:longword;offset:array of longint;data:longword;offset0:longint):boolean;
@@ -151,16 +151,17 @@ var addr0:longword;
 begin
 setaddr:=getaddr0(base,offset,addr0);
 if setaddr=false then exit;
-if length(offset)>0 then setaddr:=ReadProcessMemory(phnd,pointer(longword(addr0+offset0)),@data,sizeof(data),addrnum);
+if length(offset)>0 then setaddr:=ReadProcessMemory(phnd,pointer(PtrUInt(longword(addr0+offset0))),@data,sizeof(data),addrnum);
 if setaddr=false then exit;
-if length(offset)>0 then setaddr:=WriteProcessMemory(phnd,pointer(addr0),@data,sizeof(data),addrnum);
+if length(offset)>0 then setaddr:=WriteProcessMemory(phnd,pointer(PtrUInt(addr0)),@data,sizeof(data),addrnum);
 end;
 
-const ihull=1;
-      ishld=2;
-      ijump=3;
-      irebl=4;
-      iengy=5;
+const 
+      irebl=1;
+      ijump=2;
+      iengy=3;
+      ihull=4;
+      ishld=5;
       iscrp=6;
       ifuel=7;
       imsle=8;
@@ -182,11 +183,11 @@ const ihull=1;
 const maxitem=23;
 const itemc:array[0..maxitem]of ansistring=(
 'ALL',
+'REBEL',
+'JUMP',
+'REACTOR',
 'HULL',
 'SHIELD',
-'JUMP',
-'REBEL',
-'REACTOR',
 'SCRAP',
 'FUEL',
 'MISSILE',
@@ -320,9 +321,9 @@ var crewi:shortint;
 }
 var crewb:boolean;
 var sys,power,powermax,powerstat,powerzelta:longword;
-var wponmax:longword;
-var wponcount:longint;
-var wponid:longword;
+var wponmax,dronmax:longword;
+var wponcount,droncount:longint;
+var wponid,dronid:longword;
 
 begin
 for itemi:=0 to maxitem do itemb[itemi]:=-1;
@@ -335,6 +336,7 @@ getphnd();
 baseaddr:=getbaseaddr();
 if multb then baseoffset:=$004C548C else baseoffset:=$0051348C;
 if multb then wponid:=$E78C else wponid:=$C540;
+if multb then dronid:=$01470000 else dronid:=$01470000;
 if multb then baseoffset_engy:=$75B4 else baseoffset_engy:=$7694;
 if getaddr(baseaddr+baseoffset,[],data) then for itemi:=0 to maxitem do itemb[itemi]:=0;
 repeat
@@ -356,6 +358,7 @@ if data=0 then
   getaddr(baseaddr+baseoffset,[$24,$1C4],oxgn1);
   getaddr(baseaddr+baseoffset,[$24,$1C8],oxgn2);
   oxgnn:=(oxgn2-oxgn1)div 4;
+
   wponcount:=-1;
   repeat
   wponcount:=wponcount+1;
@@ -369,19 +372,44 @@ if data=0 then
     getaddr(baseaddr+baseoffset,[$48,$1C8,$4*addri,$F8],data);
     wponmax:=wponmax+data;
     end;
+
+  droncount:=-1;
+  repeat
+  droncount:=droncount+1;
+  data:=0;
+  getaddr(baseaddr+baseoffset,[$4C,$1C0,$4*droncount,0],data);
+  until (data and $FFFF0000)<>dronid;
+  dronmax:=0;
+  if droncount>0 then for addri:=0 to droncount-1 do
+    begin
+    data:=0;
+    getaddr(baseaddr+baseoffset,[$4C,$1C0,$4*addri,$10],data);
+    dronmax:=dronmax+data;
+    end;
+
   for itemi:=1 to maxitem do
     begin
     if itemb[itemi]>=1 then
       case itemi of
-      ihull:setaddr(baseaddr+baseoffset,[$CC],30);
-      ishld:begin
-            data:=0;
-            getaddr(baseaddr+baseoffset,[$44,$1E8],data);
-            if data>0 then setaddr(baseaddr+baseoffset,[$44,$1E8],f2l(2));
-            end;
-      ijump:setaddr(baseaddr+baseoffset,[$48C],f2l(85));
       irebl:setaddr(baseaddr+baseoffset+$C,[$80],longword(-1000));
-      iengy:setaddr(baseaddr+baseoffset+baseoffset_engy,[$0],0);
+      ijump:setaddr(baseaddr+baseoffset,[$48C],f2l(85));
+      iengy:
+        begin
+        setaddr(baseaddr+baseoffset+baseoffset_engy,[$0],0);
+        setaddr(baseaddr+baseoffset+baseoffset_engy,[$4],64);
+        end;
+      ihull:
+        begin
+        data:=30;
+        getaddr(baseaddr+baseoffset,[$CC+4],data);
+        setaddr(baseaddr+baseoffset,[$CC],data);
+        end;
+      ishld:
+        begin
+        data:=0;
+        getaddr(baseaddr+baseoffset,[$44,$1E8],data);
+        if data>0 then setaddr(baseaddr+baseoffset,[$44,$1E8],f2l(2));
+        end;
       iscrp:setaddr(baseaddr+baseoffset,[$4D4],99999);
       ifuel:setaddr(baseaddr+baseoffset,[$494],999);
       imsle:setaddr(baseaddr+baseoffset,[$48,$1E8],999);
@@ -399,13 +427,22 @@ if data=0 then
           getaddr(baseaddr+baseoffset,[$18,$4*addri,$1A0],powermax);
           getaddr(baseaddr+baseoffset,[$18,$4*addri,$170],powerzelta);
           getaddr(baseaddr+baseoffset,[$18,$4*addri,$100],powerstat);
-          if (sys=$70616577) then power:=wponmax
-          else if (sys=$6E6F7264) then power:=powermax*2-powerstat+4
+          if (sys=$70616577) then power:=wponmax	//weapon
+          else if (sys=$6E6F7264) then power:=dronmax	//drone
           else
             begin
-            power:=powermax;
-            setaddr(baseaddr+baseoffset,[$18,$4*addri,$50],max(powermax-powerzelta,0));
-            setaddr(baseaddr+baseoffset,[$18,$4*addri,$16C],max(powermax-powerzelta,0));
+            if (sys=$65696873) then power:=16	//shield
+            else if (sys=$6E6F6C63) then power:=4	//clone
+            else if (sys=$6264656D) then power:=4	//medbay
+            else if (sys=$6B636168) then power:=3	//hack
+            else if (sys=$616F6C63) then power:=6	//hide
+            else if (sys=$646E696D) then power:=3	//mind
+            else if (sys=$6F6C6970) then power:=3	//stear
+            else if (sys=$74746162) then power:=12	//battery
+            else if (sys=$6779786F) then power:=6	//oxygen
+            else power:=powermax;
+            setaddr(baseaddr+baseoffset,[$18,$4*addri,$50],max(power-powerzelta,0));
+            setaddr(baseaddr+baseoffset,[$18,$4*addri,$16C],max(power-powerzelta,0));
             end;
           setaddr(baseaddr+baseoffset,[$18,$4*addri,$54],power);
           setaddr(baseaddr+baseoffset,[$18,$4*addri,$104],power);
@@ -470,7 +507,7 @@ if data=0 then
           end;
         addri:=addri+1;
 //readln();
-        until (addrm=maxman) or (addri>=20);
+        until (addrm=maxman) or (addri>=32);
         end;
       end;
 //    writeln('@',itemi,itemb[itemi]);
