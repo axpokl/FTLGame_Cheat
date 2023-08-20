@@ -156,7 +156,7 @@ if setaddr=false then exit;
 if length(offset)>0 then setaddr:=WriteProcessMemory(phnd,pointer(PtrUInt(addr0)),@data,sizeof(data),addrnum);
 end;
 
-const 
+const
       irebl=1;
       ijump=2;
       iengy=3;
@@ -298,7 +298,8 @@ end;
 
 var baseaddr:longword;
 var baseoffset:longword;
-var baseoffset_engy:longword;
+var engyoffset:longword;
+var crewoffset:longword;
 var data:longword;
 var addri,addrj,addrm:longword;
 
@@ -335,9 +336,10 @@ getwin2();
 getphnd();
 baseaddr:=getbaseaddr();
 if multb then baseoffset:=$004C548C else baseoffset:=$0051348C;
+if multb then engyoffset:=$75B4 else engyoffset:=$7694;
+if multb then crewoffset:=$19C0 else crewoffset:=$19C0;
 if multb then wponid:=$E78C else wponid:=$C540;
 if multb then dronid:=$01470000 else dronid:=$01470000;
-if multb then baseoffset_engy:=$75B4 else baseoffset_engy:=$7694;
 if getaddr(baseaddr+baseoffset,[],data) then for itemi:=0 to maxitem do itemb[itemi]:=0;
 repeat
 data:=1;getaddr(baseaddr+baseoffset-$46C,[$10],data);
@@ -395,8 +397,9 @@ if data=0 then
       ijump:setaddr(baseaddr+baseoffset,[$48C],f2l(85));
       iengy:
         begin
-        setaddr(baseaddr+baseoffset+baseoffset_engy,[$0],0);
-        setaddr(baseaddr+baseoffset+baseoffset_engy,[$4],64);
+        setaddr(baseaddr+baseoffset+engyoffset,[$0],0);
+        if multb then setaddr(baseaddr+baseoffset+engyoffset,[$4],60)
+        else setaddr(baseaddr+baseoffset+engyoffset,[$4],30);
         end;
       ihull:
         begin
@@ -427,20 +430,20 @@ if data=0 then
           getaddr(baseaddr+baseoffset,[$18,$4*addri,$1A0],powermax);
           getaddr(baseaddr+baseoffset,[$18,$4*addri,$170],powerzelta);
           getaddr(baseaddr+baseoffset,[$18,$4*addri,$100],powerstat);
-          if (sys=$70616577) then power:=wponmax	//weapon
-          else if (sys=$6E6F7264) then power:=dronmax	//drone
+          if (sys=$70616577) then power:=max(8,wponmax)	//weapon
+          else if (sys=$6E6F7264) then power:=max(8,dronmax)	//drone
           else
             begin
-            if (sys=$65696873) then power:=16	//shield
-            else if (sys=$6E6F6C63) then power:=4	//clone
-            else if (sys=$6264656D) then power:=4	//medbay
-            else if (sys=$6B636168) then power:=3	//hack
-            else if (sys=$616F6C63) then power:=6	//hide
-            else if (sys=$646E696D) then power:=3	//mind
-            else if (sys=$6F6C6970) then power:=3	//stear
-            else if (sys=$74746162) then power:=12	//battery
-            else if (sys=$6779786F) then power:=6	//oxygen
-            else power:=powermax;
+              if (sys=$65696873) then power:=16	//shield
+              else if (sys=$6E6F6C63) then power:=3	//clone
+              else if (sys=$6264656D) then power:=3	//medbay
+              else if (sys=$6B636168) then power:=3	//hack
+              else if (sys=$616F6C63) then power:=6	//hide
+              else if (sys=$646E696D) then power:=3	//mind
+              else if (sys=$6F6C6970) then power:=3	//stear
+              else if (sys=$74746162) then power:=12	//battery
+              else if (sys=$6779786F) then power:=6	//oxygen
+              else power:=powermax;
             setaddr(baseaddr+baseoffset,[$18,$4*addri,$50],max(power-powerzelta,0));
             setaddr(baseaddr+baseoffset,[$18,$4*addri,$16C],max(power-powerzelta,0));
             end;
@@ -478,31 +481,39 @@ if data=0 then
         data:=0;
 //        data:=3;
 //        getaddr(baseaddr+baseoffset,[$64,$4*addri,$9C,$38],data);
-//        getaddr(baseaddr+baseoffset+$19C0,[$4*addri,$1B8],data);
-//        getaddr(baseaddr+baseoffset+$19C0,[$4*addri,$9C,$38],data);
-//        getaddr(baseaddr+baseoffset+$19C0,[$4*addri,$53C],data);
+//        getaddr(baseaddr+baseoffset+crewoffset,[$4*addri,$1B8],data);
+//        getaddr(baseaddr+baseoffset+crewoffset,[$4*addri,$9C,$38],data);
+//        getaddr(baseaddr+baseoffset+crewoffset,[$4*addri,$53C],data);
 //        for crewi:=1 to 9 do if data=crew[crewi] then crewb:=true;
 //        crewb:=((data and $FFFF)=1);
         data:=1;
 //        getaddr(baseaddr+baseoffset,[$64,$4*addri,$4],data);
-        getaddr(baseaddr+baseoffset+$19C0,[$4*addri,$4],data);
-//        getaddr(baseaddr+baseoffset+$19C0,[$4*addri,$0,$58],data);
+        getaddr(baseaddr+baseoffset+crewoffset,[$4*addri,$4],data);
+//        getaddr(baseaddr+baseoffset+crewoffset,[$4*addri,$0,$58],data);
 //        if data<>0 then crewb:=false;
         crewb:=(data=0);
 //        getaddr(baseaddr+baseoffset,[$64,$4*addri,$0],data);
-        getaddr(baseaddr+baseoffset+$19C0,[$4*addri,$0],data);
-        if data and $FFFF<>$B58C then crewb:=false;
+        if multb then
+          begin
+          getaddr(baseaddr+baseoffset+crewoffset,[$4*addri,$0],data);
+          if data and $FFFF<>$B58C then crewb:=false;
+          end
+        else
+          begin
+          getaddr(baseaddr+baseoffset+crewoffset,[$4*addri,-$4],data);
+          if data and $FFFF0000<>$AC000000 then crewb:=false;
+          end;
 //        writeln(data,#9,crewb);
         if crewb=true then
           begin
           addrm:=addrm+1;
           case itemi of
 //            ihumn:setaddr(baseaddr+baseoffset,[$64,$4*addri,$28],0,4);
-            ihumn:setaddr(baseaddr+baseoffset+$19C0,[$4*addri,$28],0,4);
+            ihumn:setaddr(baseaddr+baseoffset+crewoffset,[$4*addri,$28],0,4);
 //            imove:begin setaddr(baseaddr+baseoffset,[$64,$4*addri,$8],0,$10);setaddr(baseaddr+baseoffset,[$64,$4*addri,$C],0,$10);end;
-            imove:begin setaddr(baseaddr+baseoffset+$19C0,[$4*addri,$8],0,$10);setaddr(baseaddr+baseoffset+$19C0,[$4*addri,$C],0,$10);end;
+            imove:begin setaddr(baseaddr+baseoffset+crewoffset,[$4*addri,$8],0,$10);setaddr(baseaddr+baseoffset+crewoffset,[$4*addri,$C],0,$10);end;
 //            iskil:for addrj:=0 to 5 do setaddr(baseaddr+baseoffset,[$64,$4*addri,$314,$8*addrj],0,4);
-            iskil:for addrj:=0 to 5 do setaddr(baseaddr+baseoffset+$19C0,[$4*addri,$314,$8*addrj],0,4);
+            iskil:for addrj:=0 to 5 do setaddr(baseaddr+baseoffset+crewoffset,[$4*addri,$314,$8*addrj],0,4);
             end;
           end;
         addri:=addri+1;
