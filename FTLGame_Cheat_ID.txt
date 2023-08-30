@@ -1,0 +1,16 @@
+SYS shields
+SYS engines
+SYS medbay
+SYS clonebay
+#SYS oxygen
+SYS teleporter
+SYS cloaking
+SYS artillery
+SYS mind
+SYS hacking
+SYS weapons
+SYS drones
+SYS pilot
+SYS sensors
+SYS doors
+SYS battery

@@ -20,13 +20,10 @@ position:=pos(fltclass,fltname);
 if position>0 then
   begin
   flthw:=hw;
-//  writeln(hw,#9,fltname);
   position:=0;
   GetWindowTextA(flthw,fltname,256);
   position:=pos(flttitle,fltname);
   multb:=(position>0);
-//  writeln(fltname);
-//  writeln(multb);
   end;
 EnumWindowsProc:=true;
 end;
@@ -38,7 +35,6 @@ flthw:=0;
 EnumWindows(@EnumWindowsProc,0);
 sleep(1);
 until (flthw>0) or not(IsWin());
-//writeln(flthw);
 end;
 
 procedure getwin();
@@ -54,7 +50,6 @@ GetClassName(flthw,fltname,256);
 position:=pos(fltclass,fltname);
 sleep(1);
 until (position>0) or not(IsWin());
-//writeln(flthw);
 end;
 
 procedure getphnd();
@@ -67,40 +62,14 @@ if getlasterror=5 then
   msgbox('Access Denied while attaching FLTGame.exe, Please run FTLGame_Cheat.exe as Administrator');
   halt;
   end;
-//writeln(phnd);
 end;
 
 
-//const maxbuf=$100;
-//var buf:array[0..maxbuf]of char;
 var hmods:array[0..$1000]of longword;
 var cb:longword;
-//var cbi:longword;
-//var modinfo:TMODULEINFO;
 
 function getbaseaddr():longword;
 begin
-{
-GetProcessImageFileName(phnd,buf,length(buf));
-writeln(buf);
-EnumProcessModules(phnd,hmods,sizeof(hmods),cb);
-for cbi:=0 to cb div 4 do
-begin
-write(cbi,#9);
-write(i2hs(hmods[cbi]),#9);
-GetModuleInformation(phnd,hmods[cbi],modinfo,sizeof(modinfo));
-write(i2hs(longword(modinfo.lpBaseOfDll)),#9);
-write(i2hs(longword(modinfo.sizeofimage)),#9);
-write(i2hs(longword(modinfo.entrypoint)),#9);
-GetModuleFileNameEx(phnd,hmods[cbi],buf,length(buf));
-write(buf,#9);
-writeln();
-end;
-}
-{
-GetModuleInformation(phnd,0,modinfo,sizeof(modinfo));
-getbaseaddr:=longword(modinfo.lpBaseOfDll);
-}
 EnumProcessModules(phnd,@hmods[0],sizeof(hmods),cb);
 getbaseaddr:=hmods[0];
 end;
@@ -246,8 +215,6 @@ for idraw:=0 to maxitem do
   if itemb[idraw]=2 then tcolor:=$FFFFFF;
   Bar(0+1,szh*idraw+1,szh-2,szh-2,tcolor,transparent);
   if itemb[idraw]=2 then Circle(szh div 2,szh*idraw+1+szh div 2,szh div 6,tcolor);
-//  if itemb[idraw]=2 then Line(0+1,szh*idraw+1,szh-2,szh-2,tcolor);
-//  if itemb[idraw]=2 then Line(szh-1,szh*idraw+1,2-szh,szh-2,tcolor);
   if itemb[idraw]=0 then
     if (mousex>szh) and ((mousey div szh=idraw) or (mousey div szh=0)) then
       begin if mousedown then tcolor:=$7FFF7F else tcolor:=$7F7FFF end;
@@ -305,7 +272,6 @@ var addri,addrj,addrm:longword;
 
 var maxsys:longint;
 var maxman:longword;
-//var man1,man2:longword;
 var oxgn1,oxgn2,oxgnn:longword;
 {
 const crew:array[1..9]of longword=(
@@ -345,17 +311,12 @@ repeat
 data:=1;getaddr(baseaddr+baseoffset-$46C,[$10],data);
 if data=0 then
   begin
-  //for itemi:=0 to maxitem do if itemb[itemi]=0 then itemb[itemi]:=2;
   maxsys:=-1;
   repeat
   data:=0;
   maxsys:=maxsys+1;
   getaddr(baseaddr+baseoffset,[$18,$4*maxsys,$1C],data);
   until data<>f2l(150);
-  //getaddr(baseaddr+baseoffset,[$64],man1);
-  //getaddr(baseaddr+baseoffset,[$68],man2);
-  //maxman:=(man2-man1)div 4;
-  //getaddr(baseaddr+baseoffset-46C,[$C,$1288],maxman);
   getaddr(baseaddr+baseoffset+$19B4,[],maxman);
   getaddr(baseaddr+baseoffset,[$24,$1C4],oxgn1);
   getaddr(baseaddr+baseoffset,[$24,$1C8],oxgn2);
@@ -478,50 +439,29 @@ if data=0 then
         addrm:=0;
         repeat
         crewb:=false;
-        data:=0;
-//        data:=3;
-//        getaddr(baseaddr+baseoffset,[$64,$4*addri,$9C,$38],data);
-//        getaddr(baseaddr+baseoffset+crewoffset,[$4*addri,$1B8],data);
-//        getaddr(baseaddr+baseoffset+crewoffset,[$4*addri,$9C,$38],data);
-//        getaddr(baseaddr+baseoffset+crewoffset,[$4*addri,$53C],data);
-//        for crewi:=1 to 9 do if data=crew[crewi] then crewb:=true;
-//        crewb:=((data and $FFFF)=1);
         data:=1;
-//        getaddr(baseaddr+baseoffset,[$64,$4*addri,$4],data);
         getaddr(baseaddr+baseoffset+crewoffset,[$4*addri,$4],data);
-//        getaddr(baseaddr+baseoffset+crewoffset,[$4*addri,$0,$58],data);
-//        if data<>0 then crewb:=false;
         crewb:=(data=0);
-//        getaddr(baseaddr+baseoffset,[$64,$4*addri,$0],data);
+        getaddr(baseaddr+baseoffset+crewoffset,[$4*addri,$88],data);
+        if data=$FFFFFFFF then crewb:=false;
         if multb then
           begin
           getaddr(baseaddr+baseoffset+crewoffset,[$4*addri,$0],data);
           if data and $FFFF<>$B58C then crewb:=false;
-          end
-        else
-          begin
-          getaddr(baseaddr+baseoffset+crewoffset,[$4*addri,-$4],data);
-          if data and $FFFF0000<>$AC000000 then crewb:=false;
           end;
-//        writeln(data,#9,crewb);
         if crewb=true then
           begin
           addrm:=addrm+1;
           case itemi of
-//            ihumn:setaddr(baseaddr+baseoffset,[$64,$4*addri,$28],0,4);
             ihumn:setaddr(baseaddr+baseoffset+crewoffset,[$4*addri,$28],0,4);
-//            imove:begin setaddr(baseaddr+baseoffset,[$64,$4*addri,$8],0,$10);setaddr(baseaddr+baseoffset,[$64,$4*addri,$C],0,$10);end;
             imove:begin setaddr(baseaddr+baseoffset+crewoffset,[$4*addri,$8],0,$10);setaddr(baseaddr+baseoffset+crewoffset,[$4*addri,$C],0,$10);end;
-//            iskil:for addrj:=0 to 5 do setaddr(baseaddr+baseoffset,[$64,$4*addri,$314,$8*addrj],0,4);
             iskil:for addrj:=0 to 5 do setaddr(baseaddr+baseoffset+crewoffset,[$4*addri,$314,$8*addrj],0,4);
             end;
           end;
         addri:=addri+1;
-//readln();
         until (addrm=maxman) or (addri>=32);
         end;
       end;
-//    writeln('@',itemi,itemb[itemi]);
     end;
   for itemi:=0 to maxitem do if itemb[itemi]=1 then itemb[itemi]:=0;
   sleep(1);
@@ -530,10 +470,5 @@ sleep(1);
 until not(getaddr(baseaddr+baseoffset,[],data)) or (not(iswin()));
 sleep(1);
 until not(iswin());
-{
-//other status?
-//other human?
-//dron
-}
 
 end.
