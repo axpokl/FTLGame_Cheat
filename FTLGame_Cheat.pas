@@ -359,7 +359,7 @@ if data=0 then
       iengy:
         begin
         setaddr(baseaddr+baseoffset+engyoffset,[$0],0);
-        if multb then setaddr(baseaddr+baseoffset+engyoffset,[$4],60)
+        if multb then setaddr(baseaddr+baseoffset+engyoffset,[$4],100)
         else setaddr(baseaddr+baseoffset+engyoffset,[$4],30);
         end;
       ihull:
