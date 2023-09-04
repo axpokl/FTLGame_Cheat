@@ -4,6 +4,7 @@
     <CheatEntry>
       <ID>53</ID>
       <Description>"舰体"</Description>
+      <LastState Value="30" RealAddress="2A100114"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"FTLGame.exe"+004C548C</Address>
       <Offsets>
@@ -13,6 +14,7 @@
     <CheatEntry>
       <ID>484</ID>
       <Description>"舰体2"</Description>
+      <LastState Value="30" RealAddress="2A100118"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"FTLGame.exe"+004C548C</Address>
       <Offsets>
@@ -22,6 +24,7 @@
     <CheatEntry>
       <ID>82</ID>
       <Description>"护盾"</Description>
+      <LastState Value="0" RealAddress="1EA89B40"/>
       <VariableType>Float</VariableType>
       <Address>"FTLGame.exe"+004C548C</Address>
       <Offsets>
@@ -32,6 +35,7 @@
     <CheatEntry>
       <ID>28</ID>
       <Description>"跃迁"</Description>
+      <LastState Value="85" RealAddress="2A1004D4"/>
       <VariableType>Float</VariableType>
       <Address>"FTLGame.exe"+004C548C</Address>
       <Offsets>
@@ -41,6 +45,7 @@
     <CheatEntry>
       <ID>55</ID>
       <Description>"敌舰"</Description>
+      <LastState Value="-1000" RealAddress="32DC7124"/>
       <ShowAsSigned>1</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
       <Address>"FTLGame.exe"+004C548C+c</Address>
@@ -51,6 +56,7 @@
     <CheatEntry>
       <ID>280</ID>
       <Description>"能量"</Description>
+      <LastState Value="58" RealAddress="0E16A670"/>
       <VariableType>4 Bytes</VariableType>
       <Address>FTLGame.exe+4CCA40</Address>
       <Offsets>
@@ -60,6 +66,7 @@
     <CheatEntry>
       <ID>483</ID>
       <Description>"能量"</Description>
+      <LastState Value="100" RealAddress="0E16A674"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"FTLGame.exe"+004CCA40</Address>
       <Offsets>
@@ -69,6 +76,7 @@
     <CheatEntry>
       <ID>36</ID>
       <Description>"废料"</Description>
+      <LastState Value="100101" RealAddress="2A10051C"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"FTLGame.exe"+004C548C</Address>
       <Offsets>
@@ -78,6 +86,7 @@
     <CheatEntry>
       <ID>39</ID>
       <Description>"燃料"</Description>
+      <LastState Value="994" RealAddress="2A1004DC"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"FTLGame.exe"+004C548C</Address>
       <Offsets>
@@ -87,6 +96,7 @@
     <CheatEntry>
       <ID>43</ID>
       <Description>"导弹"</Description>
+      <LastState Value="1000" RealAddress="2A7A41E8"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"FTLGame.exe"+004C548C</Address>
       <Offsets>
@@ -97,6 +107,7 @@
     <CheatEntry>
       <ID>282</ID>
       <Description>"无人机1"</Description>
+      <LastState Value="0" RealAddress="2A100848"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"FTLGame.exe"+004C548C</Address>
       <Offsets>
@@ -106,6 +117,7 @@
     <CheatEntry>
       <ID>281</ID>
       <Description>"无人机2"</Description>
+      <LastState Value="995" RealAddress="3AEC4EFC"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"FTLGame.exe"+004C548C</Address>
       <Offsets>
@@ -123,6 +135,7 @@
         <CheatEntry>
           <ID>481</ID>
           <Description>"设备1"</Description>
+          <LastState Value="74746162" RealAddress="3AE42228"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
@@ -135,6 +148,7 @@
         <CheatEntry>
           <ID>457</ID>
           <Description>"设备2"</Description>
+          <LastState Value="616F6C63" RealAddress="3AEC7CC8"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
@@ -147,6 +161,7 @@
         <CheatEntry>
           <ID>458</ID>
           <Description>"设备3"</Description>
+          <LastState Value="726F6F64" RealAddress="1D5FE2B8"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
@@ -159,6 +174,7 @@
         <CheatEntry>
           <ID>459</ID>
           <Description>"设备4"</Description>
+          <LastState Value="69676E65" RealAddress="0DEC4678"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
@@ -171,6 +187,7 @@
         <CheatEntry>
           <ID>460</ID>
           <Description>"设备5"</Description>
+          <LastState Value="6E6F6C63" RealAddress="3BE253F0"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
@@ -183,6 +200,7 @@
         <CheatEntry>
           <ID>461</ID>
           <Description>"设备6"</Description>
+          <LastState Value="6779786F" RealAddress="2D248D80"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
@@ -195,6 +213,7 @@
         <CheatEntry>
           <ID>462</ID>
           <Description>"设备7"</Description>
+          <LastState Value="6F6C6970" RealAddress="1D5FF488"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
@@ -207,6 +226,7 @@
         <CheatEntry>
           <ID>463</ID>
           <Description>"设备8"</Description>
+          <LastState Value="736E6573" RealAddress="1D5FF650"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
@@ -219,6 +239,7 @@
         <CheatEntry>
           <ID>464</ID>
           <Description>"设备9"</Description>
+          <LastState Value="70616577" RealAddress="2A7A4028"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
@@ -231,6 +252,7 @@
         <CheatEntry>
           <ID>465</ID>
           <Description>"设备10"</Description>
+          <LastState Value="65696873" RealAddress="1EA89980"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
@@ -243,6 +265,7 @@
         <CheatEntry>
           <ID>466</ID>
           <Description>"设备11"</Description>
+          <LastState Value="6E6F7264" RealAddress="3AEC4D58"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
@@ -255,6 +278,7 @@
         <CheatEntry>
           <ID>467</ID>
           <Description>"设备12"</Description>
+          <LastState Value="656C6574" RealAddress="3AE41C40"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
@@ -267,6 +291,7 @@
         <CheatEntry>
           <ID>361</ID>
           <Description>"设备1"</Description>
+          <LastState Value="3F800000" RealAddress="0DF66D2C"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
@@ -287,6 +312,7 @@
         <CheatEntry>
           <ID>439</ID>
           <Description>"充能1"</Description>
+          <LastState Value="12" RealAddress="3AE42250"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -298,6 +324,7 @@
         <CheatEntry>
           <ID>440</ID>
           <Description>"充能2"</Description>
+          <LastState Value="6" RealAddress="3AEC7CF0"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -309,6 +336,7 @@
         <CheatEntry>
           <ID>442</ID>
           <Description>"充能3"</Description>
+          <LastState Value="3" RealAddress="1D5FE2E0"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -320,6 +348,7 @@
         <CheatEntry>
           <ID>444</ID>
           <Description>"充能4"</Description>
+          <LastState Value="8" RealAddress="0DEC46A0"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -331,6 +360,7 @@
         <CheatEntry>
           <ID>445</ID>
           <Description>"充能5"</Description>
+          <LastState Value="3" RealAddress="3BE25418"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -342,6 +372,7 @@
         <CheatEntry>
           <ID>446</ID>
           <Description>"充能6"</Description>
+          <LastState Value="6" RealAddress="2D248DA8"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -353,6 +384,7 @@
         <CheatEntry>
           <ID>448</ID>
           <Description>"充能7"</Description>
+          <LastState Value="3" RealAddress="1D5FF4B0"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -364,6 +396,7 @@
         <CheatEntry>
           <ID>450</ID>
           <Description>"充能8"</Description>
+          <LastState Value="3" RealAddress="1D5FF678"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -375,6 +408,7 @@
         <CheatEntry>
           <ID>452</ID>
           <Description>"充能9"</Description>
+          <LastState Value="9" RealAddress="2A7A4050"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -386,6 +420,7 @@
         <CheatEntry>
           <ID>454</ID>
           <Description>"充能10"</Description>
+          <LastState Value="16" RealAddress="1EA899A8"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -397,6 +432,7 @@
         <CheatEntry>
           <ID>455</ID>
           <Description>"充能11"</Description>
+          <LastState Value="0" RealAddress="3AEC4D80"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -408,11 +444,59 @@
         <CheatEntry>
           <ID>456</ID>
           <Description>"充能12"</Description>
+          <LastState Value="4" RealAddress="3AE41C68"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
             <Offset>50</Offset>
             <Offset>2C</Offset>
+            <Offset>18</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>498</ID>
+          <Description>"充能13"</Description>
+          <LastState Value="3" RealAddress="3BE23BB8"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"FTLGame.exe"+004C548C</Address>
+          <Offsets>
+            <Offset>50</Offset>
+            <Offset>30</Offset>
+            <Offset>18</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>501</ID>
+          <Description>"充能14"</Description>
+          <LastState Value="3" RealAddress="37F1D858"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"FTLGame.exe"+004C548C</Address>
+          <Offsets>
+            <Offset>50</Offset>
+            <Offset>34</Offset>
+            <Offset>18</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>502</ID>
+          <Description>"充能15"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"FTLGame.exe"+004C548C</Address>
+          <Offsets>
+            <Offset>50</Offset>
+            <Offset>38</Offset>
+            <Offset>18</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>503</ID>
+          <Description>"充能16"</Description>
+          <LastState Value="0" RealAddress="3F800050"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"FTLGame.exe"+004C548C</Address>
+          <Offsets>
+            <Offset>50</Offset>
+            <Offset>3C</Offset>
             <Offset>18</Offset>
           </Offsets>
         </CheatEntry>
@@ -428,6 +512,7 @@
         <CheatEntry>
           <ID>347</ID>
           <Description>"充能1"</Description>
+          <LastState Value="1" RealAddress="3AE4236C"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -439,6 +524,7 @@
         <CheatEntry>
           <ID>348</ID>
           <Description>"充能2"</Description>
+          <LastState Value="6" RealAddress="3AEC7E0C"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -450,6 +536,7 @@
         <CheatEntry>
           <ID>349</ID>
           <Description>"充能3"</Description>
+          <LastState Value="1" RealAddress="1D5FE3FC"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -461,6 +548,7 @@
         <CheatEntry>
           <ID>350</ID>
           <Description>"充能4"</Description>
+          <LastState Value="8" RealAddress="0DEC47BC"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -472,6 +560,7 @@
         <CheatEntry>
           <ID>351</ID>
           <Description>"充能5"</Description>
+          <LastState Value="3" RealAddress="3BE25534"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -483,6 +572,7 @@
         <CheatEntry>
           <ID>352</ID>
           <Description>"充能6"</Description>
+          <LastState Value="6" RealAddress="2D248EC4"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -494,6 +584,7 @@
         <CheatEntry>
           <ID>353</ID>
           <Description>"充能7"</Description>
+          <LastState Value="2" RealAddress="1D5FF5CC"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -505,6 +596,7 @@
         <CheatEntry>
           <ID>354</ID>
           <Description>"充能8"</Description>
+          <LastState Value="2" RealAddress="1D5FF794"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -516,6 +608,7 @@
         <CheatEntry>
           <ID>355</ID>
           <Description>"充能9"</Description>
+          <LastState Value="0" RealAddress="2A7A416C"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -527,6 +620,7 @@
         <CheatEntry>
           <ID>356</ID>
           <Description>"充能10"</Description>
+          <LastState Value="16" RealAddress="1EA89AC4"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -538,6 +632,7 @@
         <CheatEntry>
           <ID>357</ID>
           <Description>"充能11"</Description>
+          <LastState Value="0" RealAddress="3AEC4E9C"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -549,11 +644,59 @@
         <CheatEntry>
           <ID>358</ID>
           <Description>"充能12"</Description>
+          <LastState Value="4" RealAddress="3AE41D84"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
             <Offset>16C</Offset>
             <Offset>2C</Offset>
+            <Offset>18</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>499</ID>
+          <Description>"充能13"</Description>
+          <LastState Value="3" RealAddress="3BE23CD4"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"FTLGame.exe"+004C548C</Address>
+          <Offsets>
+            <Offset>16C</Offset>
+            <Offset>30</Offset>
+            <Offset>18</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>504</ID>
+          <Description>"充能14"</Description>
+          <LastState Value="3" RealAddress="37F1D974"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"FTLGame.exe"+004C548C</Address>
+          <Offsets>
+            <Offset>16C</Offset>
+            <Offset>34</Offset>
+            <Offset>18</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>505</ID>
+          <Description>"充能15"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"FTLGame.exe"+004C548C</Address>
+          <Offsets>
+            <Offset>16C</Offset>
+            <Offset>38</Offset>
+            <Offset>18</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>506</ID>
+          <Description>"充能16"</Description>
+          <LastState Value="0" RealAddress="3F80016C"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"FTLGame.exe"+004C548C</Address>
+          <Offsets>
+            <Offset>16C</Offset>
+            <Offset>3C</Offset>
             <Offset>18</Offset>
           </Offsets>
         </CheatEntry>
@@ -569,6 +712,7 @@
         <CheatEntry>
           <ID>345</ID>
           <Description>"血量1"</Description>
+          <LastState Value="12" RealAddress="3AE42300"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -580,6 +724,7 @@
         <CheatEntry>
           <ID>236</ID>
           <Description>"血量2"</Description>
+          <LastState Value="6" RealAddress="3AEC7DA0"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -591,6 +736,7 @@
         <CheatEntry>
           <ID>237</ID>
           <Description>"血量3"</Description>
+          <LastState Value="3" RealAddress="1D5FE390"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -602,6 +748,7 @@
         <CheatEntry>
           <ID>269</ID>
           <Description>"血量4"</Description>
+          <LastState Value="8" RealAddress="0DEC4750"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -613,6 +760,7 @@
         <CheatEntry>
           <ID>239</ID>
           <Description>"血量5"</Description>
+          <LastState Value="3" RealAddress="3BE254C8"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -624,6 +772,7 @@
         <CheatEntry>
           <ID>240</ID>
           <Description>"血量6"</Description>
+          <LastState Value="6" RealAddress="2D248E58"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -635,6 +784,7 @@
         <CheatEntry>
           <ID>241</ID>
           <Description>"血量7"</Description>
+          <LastState Value="3" RealAddress="1D5FF560"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -646,6 +796,7 @@
         <CheatEntry>
           <ID>242</ID>
           <Description>"血量8"</Description>
+          <LastState Value="3" RealAddress="1D5FF728"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -657,6 +808,7 @@
         <CheatEntry>
           <ID>243</ID>
           <Description>"血量9"</Description>
+          <LastState Value="9" RealAddress="2A7A4100"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -668,6 +820,7 @@
         <CheatEntry>
           <ID>245</ID>
           <Description>"血量10"</Description>
+          <LastState Value="16" RealAddress="1EA89A58"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -679,6 +832,7 @@
         <CheatEntry>
           <ID>246</ID>
           <Description>"血量11"</Description>
+          <LastState Value="8" RealAddress="3AEC4E30"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -690,11 +844,59 @@
         <CheatEntry>
           <ID>249</ID>
           <Description>"血量12"</Description>
+          <LastState Value="4" RealAddress="3AE41D18"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
             <Offset>100</Offset>
             <Offset>2C</Offset>
+            <Offset>18</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>500</ID>
+          <Description>"血量13"</Description>
+          <LastState Value="3" RealAddress="3BE23C68"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"FTLGame.exe"+004C548C</Address>
+          <Offsets>
+            <Offset>100</Offset>
+            <Offset>30</Offset>
+            <Offset>18</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>507</ID>
+          <Description>"血量14"</Description>
+          <LastState Value="3" RealAddress="37F1D908"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"FTLGame.exe"+004C548C</Address>
+          <Offsets>
+            <Offset>100</Offset>
+            <Offset>34</Offset>
+            <Offset>18</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>508</ID>
+          <Description>"血量15"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"FTLGame.exe"+004C548C</Address>
+          <Offsets>
+            <Offset>100</Offset>
+            <Offset>38</Offset>
+            <Offset>18</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>509</ID>
+          <Description>"血量16"</Description>
+          <LastState Value="0" RealAddress="3F800100"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"FTLGame.exe"+004C548C</Address>
+          <Offsets>
+            <Offset>100</Offset>
+            <Offset>3C</Offset>
             <Offset>18</Offset>
           </Offsets>
         </CheatEntry>
@@ -710,6 +912,7 @@
         <CheatEntry>
           <ID>257</ID>
           <Description>"冷却1"</Description>
+          <LastState Value="5" RealAddress="3AE42334"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -721,6 +924,7 @@
         <CheatEntry>
           <ID>279</ID>
           <Description>"冷却2"</Description>
+          <LastState Value="5" RealAddress="3AEC7DD4"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -732,6 +936,7 @@
         <CheatEntry>
           <ID>278</ID>
           <Description>"冷却3"</Description>
+          <LastState Value="5" RealAddress="1D5FE3C4"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -743,6 +948,7 @@
         <CheatEntry>
           <ID>277</ID>
           <Description>"冷却4"</Description>
+          <LastState Value="5" RealAddress="0DEC4784"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -754,6 +960,7 @@
         <CheatEntry>
           <ID>276</ID>
           <Description>"冷却5"</Description>
+          <LastState Value="5" RealAddress="3BE254FC"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -765,6 +972,7 @@
         <CheatEntry>
           <ID>275</ID>
           <Description>"冷却6"</Description>
+          <LastState Value="5" RealAddress="2D248E8C"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -776,6 +984,7 @@
         <CheatEntry>
           <ID>274</ID>
           <Description>"冷却7"</Description>
+          <LastState Value="5" RealAddress="1D5FF594"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -787,6 +996,7 @@
         <CheatEntry>
           <ID>273</ID>
           <Description>"冷却8"</Description>
+          <LastState Value="5" RealAddress="1D5FF75C"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -798,6 +1008,7 @@
         <CheatEntry>
           <ID>272</ID>
           <Description>"冷却9"</Description>
+          <LastState Value="5" RealAddress="2A7A4134"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -809,6 +1020,7 @@
         <CheatEntry>
           <ID>271</ID>
           <Description>"冷却10"</Description>
+          <LastState Value="5" RealAddress="1EA89A8C"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -820,6 +1032,7 @@
         <CheatEntry>
           <ID>270</ID>
           <Description>"冷却11"</Description>
+          <LastState Value="5" RealAddress="3AEC4E64"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -831,6 +1044,7 @@
         <CheatEntry>
           <ID>254</ID>
           <Description>"冷却12"</Description>
+          <LastState Value="5" RealAddress="3AE41D4C"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -851,6 +1065,7 @@
         <CheatEntry>
           <ID>127</ID>
           <Description>"黑客持续"</Description>
+          <LastState Value="0" RealAddress="37F1DFB8"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -861,6 +1076,7 @@
         <CheatEntry>
           <ID>261</ID>
           <Description>"隐身持续"</Description>
+          <LastState Value="0" RealAddress="3AEC7E6C"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -871,6 +1087,7 @@
         <CheatEntry>
           <ID>258</ID>
           <Description>"心灵持续"</Description>
+          <LastState Value="28" RealAddress="3BE23D28"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -881,6 +1098,7 @@
         <CheatEntry>
           <ID>311</ID>
           <Description>"克隆持续"</Description>
+          <LastState Value="0" RealAddress="3BE25588"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -900,6 +1118,7 @@
         <CheatEntry>
           <ID>479</ID>
           <Description>"武器1"</Description>
+          <LastState Value="0124E78C" RealAddress="29515160"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
@@ -913,6 +1132,7 @@
         <CheatEntry>
           <ID>234</ID>
           <Description>"武器2"</Description>
+          <LastState Value="0124E78C" RealAddress="2950F970"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
@@ -926,6 +1146,7 @@
         <CheatEntry>
           <ID>233</ID>
           <Description>"武器3"</Description>
+          <LastState Value="0124E78C" RealAddress="295157A8"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
@@ -939,6 +1160,7 @@
         <CheatEntry>
           <ID>232</ID>
           <Description>"武器4"</Description>
+          <LastState Value="0124E78C" RealAddress="195348C0"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
@@ -961,6 +1183,7 @@
         <CheatEntry>
           <ID>469</ID>
           <Description>"武器1"</Description>
+          <LastState Value="4" RealAddress="29515258"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -973,6 +1196,7 @@
         <CheatEntry>
           <ID>470</ID>
           <Description>"武器2"</Description>
+          <LastState Value="2" RealAddress="2950FA68"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -985,6 +1209,7 @@
         <CheatEntry>
           <ID>471</ID>
           <Description>"武器3"</Description>
+          <LastState Value="2" RealAddress="295158A0"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -997,6 +1222,7 @@
         <CheatEntry>
           <ID>472</ID>
           <Description>"武器4"</Description>
+          <LastState Value="1" RealAddress="195349B8"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -1018,6 +1244,7 @@
         <CheatEntry>
           <ID>306</ID>
           <Description>"武器1"</Description>
+          <LastState Value="1" RealAddress="2951578C"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -1030,6 +1257,7 @@
         <CheatEntry>
           <ID>307</ID>
           <Description>"武器2"</Description>
+          <LastState Value="1" RealAddress="2950FF9C"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -1042,6 +1270,7 @@
         <CheatEntry>
           <ID>308</ID>
           <Description>"武器3"</Description>
+          <LastState Value="1" RealAddress="29515DD4"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -1054,6 +1283,7 @@
         <CheatEntry>
           <ID>309</ID>
           <Description>"武器4"</Description>
+          <LastState Value="1" RealAddress="19534EEC"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -1066,6 +1296,20 @@
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
+      <ID>510</ID>
+      <Description>"无人机数量"</Description>
+      <LastState Value="2" RealAddress="31F3D8E0"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"FTLGame.exe"+004C6F80</Address>
+      <Offsets>
+        <Offset>28</Offset>
+        <Offset>C</Offset>
+        <Offset>8</Offset>
+        <Offset>8</Offset>
+        <Offset>54</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
       <ID>433</ID>
       <Description>"无人机"</Description>
       <LastState Value="" RealAddress="00000000"/>
@@ -1074,6 +1318,7 @@
         <CheatEntry>
           <ID>480</ID>
           <Description>"无人机1"</Description>
+          <LastState Value="0124CBD0" RealAddress="36820478"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
@@ -1087,6 +1332,7 @@
         <CheatEntry>
           <ID>435</ID>
           <Description>"无人机2"</Description>
+          <LastState Value="0124CBD0" RealAddress="36821DA0"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
@@ -1121,6 +1367,7 @@
         <CheatEntry>
           <ID>474</ID>
           <Description>"无人机1"</Description>
+          <LastState Value="5" RealAddress="36820488"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -1133,6 +1380,7 @@
         <CheatEntry>
           <ID>475</ID>
           <Description>"无人机2"</Description>
+          <LastState Value="5" RealAddress="36821DB0"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -1165,6 +1413,7 @@
         <CheatEntry>
           <ID>430</ID>
           <Description>"无人机1"</Description>
+          <LastState Value="0" RealAddress="36820484"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -1177,6 +1426,7 @@
         <CheatEntry>
           <ID>431</ID>
           <Description>"无人机2"</Description>
+          <LastState Value="0" RealAddress="36821DAC"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C548C</Address>
           <Offsets>
@@ -1203,6 +1453,7 @@
     <CheatEntry>
       <ID>84</ID>
       <Description>"人数"</Description>
+      <LastState Value="8" RealAddress="32DC7F88"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"FTLGame.exe"+004C548C-46c</Address>
       <Offsets>
@@ -1213,6 +1464,7 @@
     <CheatEntry>
       <ID>304</ID>
       <Description>"人数（当前）"</Description>
+      <LastState Value="8" RealAddress="01256E40"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"FTLGame.exe"+004C548C+19B4</Address>
     </CheatEntry>
@@ -1226,6 +1478,7 @@
         <CheatEntry>
           <ID>376</ID>
           <Description>"人1"</Description>
+          <LastState Value="0" RealAddress="3653A87C"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
           <Offsets>
@@ -1236,6 +1489,7 @@
         <CheatEntry>
           <ID>385</ID>
           <Description>"人2"</Description>
+          <LastState Value="0" RealAddress="3A81287C"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
           <Offsets>
@@ -1246,6 +1500,7 @@
         <CheatEntry>
           <ID>384</ID>
           <Description>"人3"</Description>
+          <LastState Value="0" RealAddress="3316187C"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
           <Offsets>
@@ -1256,6 +1511,7 @@
         <CheatEntry>
           <ID>383</ID>
           <Description>"人4"</Description>
+          <LastState Value="0" RealAddress="2567187C"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
           <Offsets>
@@ -1266,6 +1522,7 @@
         <CheatEntry>
           <ID>382</ID>
           <Description>"人5"</Description>
+          <LastState Value="0" RealAddress="388C2874"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
           <Offsets>
@@ -1276,6 +1533,7 @@
         <CheatEntry>
           <ID>381</ID>
           <Description>"人6"</Description>
+          <LastState Value="0" RealAddress="381DE874"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
           <Offsets>
@@ -1286,6 +1544,7 @@
         <CheatEntry>
           <ID>380</ID>
           <Description>"人7"</Description>
+          <LastState Value="0" RealAddress="2DE8084C"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
           <Offsets>
@@ -1296,6 +1555,7 @@
         <CheatEntry>
           <ID>379</ID>
           <Description>"人8"</Description>
+          <LastState Value="0" RealAddress="3045084C"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
           <Offsets>
@@ -1306,6 +1566,7 @@
         <CheatEntry>
           <ID>378</ID>
           <Description>"人9"</Description>
+          <LastState Value="0" RealAddress="3045084C"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
           <Offsets>
@@ -1316,6 +1577,7 @@
         <CheatEntry>
           <ID>377</ID>
           <Description>"人10"</Description>
+          <LastState Value="0" RealAddress="3045084C"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
           <Offsets>
@@ -1326,6 +1588,7 @@
         <CheatEntry>
           <ID>387</ID>
           <Description>"人11"</Description>
+          <LastState Value="0" RealAddress="3045084C"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
           <Offsets>
@@ -1355,6 +1618,7 @@
         <CheatEntry>
           <ID>402</ID>
           <Description>"人1"</Description>
+          <LastState Value="0124B58C" RealAddress="3653A878"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
@@ -1366,6 +1630,7 @@
         <CheatEntry>
           <ID>403</ID>
           <Description>"人2"</Description>
+          <LastState Value="0124B58C" RealAddress="3A812878"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
@@ -1377,6 +1642,7 @@
         <CheatEntry>
           <ID>404</ID>
           <Description>"人3"</Description>
+          <LastState Value="0124B58C" RealAddress="33161878"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
@@ -1388,6 +1654,7 @@
         <CheatEntry>
           <ID>405</ID>
           <Description>"人4"</Description>
+          <LastState Value="0124B58C" RealAddress="25671878"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
@@ -1399,6 +1666,7 @@
         <CheatEntry>
           <ID>406</ID>
           <Description>"人5"</Description>
+          <LastState Value="0124B58C" RealAddress="388C2870"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
@@ -1410,6 +1678,7 @@
         <CheatEntry>
           <ID>407</ID>
           <Description>"人6"</Description>
+          <LastState Value="0124B58C" RealAddress="381DE870"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
@@ -1421,6 +1690,7 @@
         <CheatEntry>
           <ID>408</ID>
           <Description>"人7"</Description>
+          <LastState Value="0124B58C" RealAddress="2DE80848"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
@@ -1432,6 +1702,7 @@
         <CheatEntry>
           <ID>409</ID>
           <Description>"人8"</Description>
+          <LastState Value="0124B58C" RealAddress="30450848"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
@@ -1443,6 +1714,7 @@
         <CheatEntry>
           <ID>410</ID>
           <Description>"人9"</Description>
+          <LastState Value="0124B58C" RealAddress="30450848"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
@@ -1454,6 +1726,7 @@
         <CheatEntry>
           <ID>411</ID>
           <Description>"人10"</Description>
+          <LastState Value="0124B58C" RealAddress="30450848"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
@@ -1465,6 +1738,7 @@
         <CheatEntry>
           <ID>412</ID>
           <Description>"人11"</Description>
+          <LastState Value="0124B58C" RealAddress="30450848"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
@@ -1496,6 +1770,7 @@
         <CheatEntry>
           <ID>486</ID>
           <Description>"人1"</Description>
+          <LastState Value="00000000" RealAddress="3653A900"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
@@ -1507,6 +1782,7 @@
         <CheatEntry>
           <ID>487</ID>
           <Description>"人2"</Description>
+          <LastState Value="0000000F" RealAddress="3A812900"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
@@ -1518,6 +1794,7 @@
         <CheatEntry>
           <ID>488</ID>
           <Description>"人3"</Description>
+          <LastState Value="00000010" RealAddress="33161900"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
@@ -1529,6 +1806,7 @@
         <CheatEntry>
           <ID>489</ID>
           <Description>"人4"</Description>
+          <LastState Value="0000000C" RealAddress="25671900"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
@@ -1540,6 +1818,7 @@
         <CheatEntry>
           <ID>490</ID>
           <Description>"人5"</Description>
+          <LastState Value="00000001" RealAddress="388C28F8"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
@@ -1551,6 +1830,7 @@
         <CheatEntry>
           <ID>491</ID>
           <Description>"人6"</Description>
+          <LastState Value="00000003" RealAddress="381DE8F8"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
@@ -1562,6 +1842,7 @@
         <CheatEntry>
           <ID>492</ID>
           <Description>"人7"</Description>
+          <LastState Value="0000000A" RealAddress="2DE808D0"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
@@ -1573,6 +1854,7 @@
         <CheatEntry>
           <ID>493</ID>
           <Description>"人8"</Description>
+          <LastState Value="0000000B" RealAddress="304508D0"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
@@ -1584,6 +1866,7 @@
         <CheatEntry>
           <ID>494</ID>
           <Description>"人9"</Description>
+          <LastState Value="0000000B" RealAddress="304508D0"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
@@ -1595,6 +1878,7 @@
         <CheatEntry>
           <ID>495</ID>
           <Description>"人10"</Description>
+          <LastState Value="0000000B" RealAddress="304508D0"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
@@ -1606,6 +1890,7 @@
         <CheatEntry>
           <ID>496</ID>
           <Description>"人11"</Description>
+          <LastState Value="0000000B" RealAddress="304508D0"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
@@ -1637,6 +1922,7 @@
         <CheatEntry>
           <ID>389</ID>
           <Description>"人1"</Description>
+          <LastState Value="224" RealAddress="3653A8A0"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
           <Offsets>
@@ -1647,6 +1933,7 @@
         <CheatEntry>
           <ID>390</ID>
           <Description>"人2"</Description>
+          <LastState Value="224" RealAddress="3A8128A0"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
           <Offsets>
@@ -1657,6 +1944,7 @@
         <CheatEntry>
           <ID>391</ID>
           <Description>"人3"</Description>
+          <LastState Value="224" RealAddress="331618A0"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
           <Offsets>
@@ -1667,6 +1955,7 @@
         <CheatEntry>
           <ID>392</ID>
           <Description>"人4"</Description>
+          <LastState Value="224" RealAddress="256718A0"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
           <Offsets>
@@ -1677,6 +1966,7 @@
         <CheatEntry>
           <ID>393</ID>
           <Description>"人5"</Description>
+          <LastState Value="224" RealAddress="388C2898"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
           <Offsets>
@@ -1687,6 +1977,7 @@
         <CheatEntry>
           <ID>394</ID>
           <Description>"人6"</Description>
+          <LastState Value="224" RealAddress="381DE898"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
           <Offsets>
@@ -1697,6 +1988,7 @@
         <CheatEntry>
           <ID>395</ID>
           <Description>"人7"</Description>
+          <LastState Value="224" RealAddress="2DE80870"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
           <Offsets>
@@ -1707,6 +1999,7 @@
         <CheatEntry>
           <ID>396</ID>
           <Description>"人8"</Description>
+          <LastState Value="224" RealAddress="30450870"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
           <Offsets>
@@ -1717,6 +2010,7 @@
         <CheatEntry>
           <ID>397</ID>
           <Description>"人9"</Description>
+          <LastState Value="224" RealAddress="30450870"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
           <Offsets>
@@ -1727,6 +2021,7 @@
         <CheatEntry>
           <ID>398</ID>
           <Description>"人10"</Description>
+          <LastState Value="224" RealAddress="30450870"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
           <Offsets>
@@ -1737,6 +2032,7 @@
         <CheatEntry>
           <ID>399</ID>
           <Description>"人11"</Description>
+          <LastState Value="224" RealAddress="30450870"/>
           <VariableType>Float</VariableType>
           <Address>"FTLGame.exe"+004C6E4C</Address>
           <Offsets>
@@ -1766,6 +2062,7 @@
         <CheatEntry>
           <ID>109</ID>
           <Description>"技能1"</Description>
+          <LastState Value="02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00" RealAddress="0E16A830"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Array of byte</VariableType>
           <ByteLength>48</ByteLength>
@@ -1779,6 +2076,7 @@
         <CheatEntry>
           <ID>416</ID>
           <Description>"技能2"</Description>
+          <LastState Value="02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00" RealAddress="0E16B898"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Array of byte</VariableType>
           <ByteLength>48</ByteLength>
@@ -1792,6 +2090,7 @@
         <CheatEntry>
           <ID>417</ID>
           <Description>"技能3"</Description>
+          <LastState Value="02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00" RealAddress="0E16BC18"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Array of byte</VariableType>
           <ByteLength>48</ByteLength>
@@ -1805,6 +2104,7 @@
         <CheatEntry>
           <ID>418</ID>
           <Description>"技能4"</Description>
+          <LastState Value="02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00" RealAddress="0E16BE10"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Array of byte</VariableType>
           <ByteLength>48</ByteLength>
@@ -1818,6 +2118,7 @@
         <CheatEntry>
           <ID>419</ID>
           <Description>"技能5"</Description>
+          <LastState Value="02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00" RealAddress="0E15C558"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Array of byte</VariableType>
           <ByteLength>48</ByteLength>
@@ -1831,6 +2132,7 @@
         <CheatEntry>
           <ID>420</ID>
           <Description>"技能6"</Description>
+          <LastState Value="02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00" RealAddress="0E15C248"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Array of byte</VariableType>
           <ByteLength>48</ByteLength>
@@ -1844,6 +2146,7 @@
         <CheatEntry>
           <ID>421</ID>
           <Description>"技能7"</Description>
+          <LastState Value="02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00" RealAddress="0E15C670"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Array of byte</VariableType>
           <ByteLength>48</ByteLength>
@@ -1857,6 +2160,7 @@
         <CheatEntry>
           <ID>422</ID>
           <Description>"技能8"</Description>
+          <LastState Value="02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00" RealAddress="31F3D2D0"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Array of byte</VariableType>
           <ByteLength>48</ByteLength>
@@ -1870,6 +2174,7 @@
         <CheatEntry>
           <ID>423</ID>
           <Description>"技能9"</Description>
+          <LastState Value="02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00" RealAddress="31F3D2D0"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Array of byte</VariableType>
           <ByteLength>48</ByteLength>
@@ -1883,6 +2188,7 @@
         <CheatEntry>
           <ID>424</ID>
           <Description>"技能10"</Description>
+          <LastState Value="02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00" RealAddress="31F3D2D0"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Array of byte</VariableType>
           <ByteLength>48</ByteLength>
@@ -1896,6 +2202,7 @@
         <CheatEntry>
           <ID>425</ID>
           <Description>"技能11"</Description>
+          <LastState Value="02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00 02 00 00 00" RealAddress="31F3D2D0"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Array of byte</VariableType>
           <ByteLength>48</ByteLength>

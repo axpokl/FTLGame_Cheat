@@ -37,8 +37,12 @@ begin
   j:=0;
   for i := 1 to Len do
   begin
+    if (str[i] >= 'a') and (str[i] <= 'z') then
+      str[i] := Chr(Ord(str[i]) - 32)
+    else if (str[i] >= 'A') and (str[i] <= 'Z') then
+      str[i] := Chr(Ord(str[i]) + 32);
     vk := VkKeyScan(str[i]);
-    if HIBYTE(vk) = 0 then
+    if HIBYTE(vk) = 1 then
     begin
       Input[j]._type := INPUT_KEYBOARD;
       Input[j].ki.wVk := VK_SHIFT;
@@ -53,7 +57,7 @@ begin
     Input[j].ki.wVk := LOBYTE(vk);
     Input[j].ki.dwFlags := KEYEVENTF_KEYUP;
     Inc(j);
-    if HIBYTE(vk) = 0 then
+    if HIBYTE(vk) = 1 then
     begin
       Input[j]._type := INPUT_KEYBOARD;
       Input[j].ki.wVk := VK_SHIFT;
