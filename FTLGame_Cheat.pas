@@ -305,7 +305,7 @@ if multb then baseoffset:=$004C548C else baseoffset:=$0051348C;
 if multb then engyoffset:=$75B4 else engyoffset:=$7694;
 if multb then crewoffset:=$19C0 else crewoffset:=$19C0;
 if multb then wponid:=$E78C else wponid:=$C540;
-if multb then dronid:=$01470000 else dronid:=$00510000;
+if multb then dronid:=$01240000 else dronid:=$00510000;
 if getaddr(baseaddr+baseoffset,[],data) then for itemi:=0 to maxitem do itemb[itemi]:=0;
 repeat
 data:=1;getaddr(baseaddr+baseoffset-$46C,[$10],data);
@@ -342,12 +342,16 @@ if data=0 then
   data:=0;
   getaddr(baseaddr+baseoffset,[$4C,$1C0,$4*droncount,0],data);
   until (data and $FFFF0000)<>dronid;
+  dronmax:=0;
   if multb then
     begin
+    getaddr(baseaddr+baseoffset+$1AF4,[$54,$8,$8,$28],data);
+    if data<=3 then droncount:=max(data,droncount);
     getaddr(baseaddr+baseoffset+$1AF4,[$54,$8,$8,$C,$28],data);
-    droncount:=data;
+    if data<=3 then droncount:=max(data,droncount);
+    getaddr(baseaddr+baseoffset+$1AF4,[$54,$8,$C,$8,$8,$28],data);
+    if data<=3 then droncount:=max(data,droncount);
     end;
-  dronmax:=0;
   if droncount>0 then for addri:=0 to droncount-1 do
     begin
     data:=0;
@@ -401,14 +405,16 @@ if data=0 then
           else
             begin
               if (sys=$65696873) then power:=16	//shield
+              else if (sys=$69676E65) then power:=8	//engine
               else if (sys=$6E6F6C63) then power:=3	//clone
               else if (sys=$6264656D) then power:=3	//medbay
-              else if (sys=$6B636168) then power:=3	//hack
+              else if (sys=$6779786F) then power:=6	//oxygen
+              else if (sys=$656C6574) then power:=4	//teleport
               else if (sys=$616F6C63) then power:=6	//hide
               else if (sys=$646E696D) then power:=3	//mind
+              else if (sys=$6B636168) then power:=3	//hack
               else if (sys=$6F6C6970) then power:=3	//stear
               else if (sys=$74746162) then power:=12	//battery
-              else if (sys=$6779786F) then power:=6	//oxygen
               else power:=powermax;
             setaddr(baseaddr+baseoffset,[$18,$4*addri,$50],max(power-powerzelta,0));
             setaddr(baseaddr+baseoffset,[$18,$4*addri,$16C],max(power-powerzelta,0));
